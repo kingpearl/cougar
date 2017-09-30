@@ -1,0 +1,365 @@
+#!/usr/bin/env bash
+##
+# Pearl Bootstrap
+# Copyright(c) 2012 King Pearl LLC
+# MIT Licensed
+##
+mkdir -p /var/tmp && cd /var/tmp/
+
+ME=$(whoami)
+PKG=profile
+if [ ! -f .installed-$PKG ];
+then
+export HOME=/vagrant
+sudo locale-gen en_US.UTF-8
+touch .installed-$PKG
+fi
+
+# Set preferences
+# PKG=preferences
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Set preferences"
+# ~/.macOS && touch .installed-$PKG
+# fi
+
+echo "Apt update"
+sudo apt-get update
+
+PKG=git
+if [ ! -f .installed-$PKG ];
+then
+echo "Apt install Git"
+sudo apt-get -y install $PKG && touch .installed-$PKG
+fi
+
+# Set permissions
+PKG=permissions
+if [ ! -f .installed-$PKG ];
+then
+echo "Set $PKG"
+sudo chmod g+rwx /usr/local/{.,bin,etc,include,lib,sbin,share,src,share/man}
+sudo chgrp $ME /usr/local/{.,bin,etc,include,lib,sbin,share,src,share/man}
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+touch .installed-$PKG
+fi
+
+# Create workspace
+PKG=workspace
+if [ ! -f .installed-$PKG ];
+then
+echo "Create $PKG"
+mkdir -p ~/.vim/{backups,bundle,swaps,undo}
+touch .installed-$PKG
+fi
+
+echo "Apt upgrade"
+sudo apt-get -y upgrade
+
+PKG=make-gcc-ssl
+if [ ! -f .installed-$PKG ];
+then
+echo "Apt install Make & GCC & SSL"
+sudo apt-get -y install build-essential libssl-dev && touch .installed-$PKG
+fi
+
+# PKG=unzip
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install unzip"
+# sudo apt-get -y install $PKG && touch .installed-$PKG
+# fi
+
+# PKG=openjdk-8-jdk
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install OpenJDK"
+# sudo apt-get -y install $PKG && touch .installed-$PKG
+# fi
+
+# PKG=silversearcher-ag
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install The Silver Searcher"
+# sudo apt-get -y install $PKG && touch .installed-$PKG
+# fi
+
+# PKG=jsduck
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Gem install JsDuck"
+# sudo gem install $PKG && touch .installed-$PKG
+# fi
+
+# PKG=git-extras
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=git-flow
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install Git Flow"
+# sudo apt-get -y install $PKG && touch .installed-$PKG
+# fi
+
+# PKG=jpegoptim
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install Jpegoptim"
+# apt-get -y install $PKG
+# fi
+
+# PKG=optipng
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install OptiPNG"
+# apt-get -y install $PKG
+# fi
+
+# PKG=phantomjs-2.1.1-linux-x86_64
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/$PKG.tar.bz2 | tar -xj --strip 1 -C $PKG && cd $PKG && cp -pR bin/* /usr/local/bin/ && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=burl
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=clib
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# sudo apt-get -y install libcurl4-gnutls-dev
+# mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+VER=v8.6.0
+PKG=node-$VER-linux-x64
+if [ ! -f .installed-$PKG ];
+then
+echo "Install Node"
+mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node && touch .installed-$PKG
+fi
+
+# echo "Update NPM"
+npm install -g npm
+
+# PKG=yarn
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Yarn"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=bower
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Bower"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=duo
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Duo"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=browserify
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Browserify"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=webpack
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install $PKG"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=typescript
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install TypeScript"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=grunt-cli
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Grunt"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=gulp
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Gulp"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=yo
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Yeoman"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=create-react-native-app
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install React Native App"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=react-native-cli
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install React Native CLI"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=react-vr-cli
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install React VR CLI"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=cordova
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Cordova"
+# npm install -g $PKG && touch .installed-$PKG
+# npm install -g ios-sim ios-deploy
+# fi
+
+# PKG=ionic
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Ionic"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# VER=v4.7.0
+# PKG=watchman
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Watchman"
+# sudo apt-get -y install autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=go1.9inux-amd64
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Go"
+# mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go && touch .installed-$PKG
+# fi
+
+# PKG=docker
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Docker"
+# sudo touch /etc/apt/sources.list.d/$PKG.list && echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee -a /etc/apt/sources.list.d/$PKG.list
+# sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+# sudo apt-get update
+# sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+# sudo apt-get install -y $PKG-engine && touch .installed-$PKG
+# fi
+
+# PKG=mongodb-linux-x86_64-3.4.9
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install MongoDB"
+# mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && sudo mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo && touch .installed-$PKG
+# fi
+
+# PKG=postgresql-9.6
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install PostgreSQL"
+# sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
+# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# sudo apt-get update
+# sudo apt-get -y install $PKG postgresql-contrib-9.6 && touch .installed-$PKG
+# sudo -u postgres psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
+# sudo -u postgres createdb -O pearl pearl
+# sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
+# fi
+
+# PKG=redis-4.0.2
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Redis"
+# mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && sudo mkdir -p /var/lib/redis && rm -fR redis && touch .installed-$PKG
+# fi
+
+# PKG=consul
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Consul"
+# curl -sL https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
+# fi
+
+# PKG=weave
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Weave"
+# curl -sL https://git.io/$PKG > /usr/local/bin/$PKG && sudo chmod a+x /usr/local/bin/$PKG && touch .installed-$PKG
+# fi
+
+# PKG=every
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=flash
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://github.com/kingpearl/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=mon
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=mad
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install $PKG"
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=psy
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install psy"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+PKG=vundle
+if [ ! -f .installed-$PKG ];
+then
+echo "Install Vundle"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+echo "colorscheme base16-spacemacs" >> ~/.vimrc
+touch .installed-$PKG
+fi

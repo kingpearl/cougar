@@ -1,0 +1,17 @@
+#!/bin/bash
+##
+# Pearl Update
+# Copyright(c) 2012 King Pearl LLC
+# MIT Licensed
+##
+echo "Apt update"
+sudo apt-get update
+
+echo "Apt upgrade"
+sudo apt-get -y upgrade
+
+# echo "NPM update"
+npm install -g npm && npm update -g
+
+echo "Vundle install/update"
+vim +BundleInstall! +qall
