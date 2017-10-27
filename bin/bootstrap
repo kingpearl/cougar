@@ -260,7 +260,7 @@ npm install -g npm
 # sudo apt-get -y install autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-# PKG=go1.9inux-amd64
+# PKG=go1.9.2.linux-amd64
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Go"
@@ -271,11 +271,15 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Docker"
-# sudo touch /etc/apt/sources.list.d/$PKG.list && echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee -a /etc/apt/sources.list.d/$PKG.list
-# sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 # sudo apt-get update
 # sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
-# sudo apt-get install -y $PKG-engine && touch .installed-$PKG
+# sudo apt-get update
+# sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# sudo apt-key fingerprint 0EBFCD88
+# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# sudo apt-get update
+# sudo apt-get install $PKG-ce
 # fi
 
 # PKG=mongodb-linux-x86_64-3.4.9
@@ -285,14 +289,14 @@ npm install -g npm
 # mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && sudo mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo && touch .installed-$PKG
 # fi
 
-# PKG=postgresql-9.6
+# PKG=postgresql-10
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install PostgreSQL"
-# sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
+# sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 # sudo apt-get update
-# sudo apt-get -y install $PKG postgresql-contrib-9.6 && touch .installed-$PKG
+# sudo apt-get -y install $PKG postgresql-contrib-10 && touch .installed-$PKG
 # sudo -u postgres psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # sudo -u postgres createdb -O pearl pearl
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'

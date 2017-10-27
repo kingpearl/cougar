@@ -156,28 +156,32 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "Install Watchman"
 # RUN apt-get -y install autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
 
-# ENV PKG=go1.9.linux-amd64
+# ENV PKG=go1.9.2.linux-amd64
 # RUN echo "Install Go"
 # RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
 
 # ENV PKG=docker
 # RUN echo "Install Docker"
-# RUN touch /etc/apt/sources.list.d/$PKG.list && echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | tee -a /etc/apt/sources.list.d/$PKG.list
-# RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 # RUN apt-get update
 # RUN apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
-# RUN apt-get install -y $PKG-engine
+# RUN apt-get update
+# RUN apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+# RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# RUN apt-key fingerprint 0EBFCD88
+# RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# RUN apt-get update
+# RUN apt-get install $PKG-ce
 
 # ENV PKG=mongodb-linux-x86_64-3.4.9
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo
 
-# ENV PKG=postgresql-9.6
+# ENV PKG=postgresql-10
 # RUN echo "Install PostgreSQL"
-# RUN touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
+# RUN touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
 # RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 # RUN apt-get update
-# RUN apt-get -y install $PKG postgresql-contrib-9.6
+# RUN apt-get -y install $PKG postgresql-contrib-10
 # RUN psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
