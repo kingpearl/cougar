@@ -85,7 +85,7 @@ RUN apt-get -y install $PKG
 # RUN apt-get -y install libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
-ENV VER=v8.8.1
+ENV VER=v8.9.0
 ENV PKG=node-$VER-linux-x64
 RUN echo "Install Node"
 RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
@@ -172,7 +172,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt-get update
 # RUN apt-get install $PKG-ce
 
-# ENV PKG=mongodb-linux-x86_64-3.4.9
+# ENV PKG=mongodb-linux-x86_64-3.4.10
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo
 
