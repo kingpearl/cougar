@@ -131,8 +131,12 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "NPM install Yeoman"
 # RUN npm install -g $PKG
 
+# ENV PKG=create-react-app
+# RUN echo "NPM install Create React App"
+# RUN npm install -g $PKG
+
 # ENV PKG=create-react-native-app
-# RUN echo "NPM install React Native App"
+# RUN echo "NPM install Create React Native App"
 # RUN npm install -g $PKG
 
 # ENV PKG=react-native-cli
@@ -151,7 +155,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "NPM install Ionic"
 # RUN npm install -g $PKG
 
-# ENV VER=v4.7.0
+# ENV VER=v4.9.0
 # ENV PKG=watchman
 # RUN echo "Install Watchman"
 # RUN apt-get -y install autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
@@ -172,7 +176,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt-get update
 # RUN apt-get install $PKG-ce
 
-# ENV PKG=mongodb-linux-x86_64-3.6.1
+# ENV PKG=mongodb-linux-x86_64-3.6.2
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo
 

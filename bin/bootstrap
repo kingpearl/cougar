@@ -216,10 +216,17 @@ npm install -g npm
 # npm install -g $PKG && touch .installed-$PKG
 # fi
 
+# PKG=create-react-app
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Create React App"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
 # PKG=create-react-native-app
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "NPM install React Native App"
+# echo "NPM install Create React Native App"
 # npm install -g $PKG && touch .installed-$PKG
 # fi
 
@@ -252,7 +259,7 @@ npm install -g npm
 # npm install -g $PKG && touch .installed-$PKG
 # fi
 
-# VER=v4.7.0
+# VER=v4.9.0
 # PKG=watchman
 # if [ ! -f .installed-$PKG ];
 # then
@@ -282,7 +289,7 @@ npm install -g npm
 # sudo apt-get install $PKG-ce
 # fi
 
-# PKG=mongodb-linux-x86_64-3.6.1
+# PKG=mongodb-linux-x86_64-3.6.2
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install MongoDB"
