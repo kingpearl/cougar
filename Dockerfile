@@ -85,7 +85,7 @@ RUN apt-get -y install $PKG
 # RUN apt-get -y install libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
-ENV VER=v8.11.2
+ENV VER=v8.11.3
 ENV PKG=node-$VER-linux-x64
 RUN echo "Install Node"
 RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
