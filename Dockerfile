@@ -176,7 +176,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt-get update
 # RUN apt-get install $PKG-ce
 
-# ENV PKG=mongodb-linux-x86_64-3.6.5
+# ENV PKG=mongodb-linux-x86_64-4.0.0
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo
 
