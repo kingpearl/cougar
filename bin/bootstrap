@@ -308,7 +308,7 @@ npm install -g npm
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 # fi
 
-# PKG=redis-4.0.10
+# PKG=redis-4.0.11
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Redis"
