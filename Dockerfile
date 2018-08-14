@@ -44,6 +44,10 @@ RUN apt-get -y install $PKG
 # RUN echo "Apt install unzip"
 # RUN apt-get -y install $PKG
 
+# ENV PKG=p7zip-full
+# RUN echo "Apt install 7Z"
+# RUN apt-get -y install $PKG
+
 # ENV PKG=openjdk-8-jdk
 # RUN echo "Apt install OpenJDK"
 # RUN apt-get -y install $PKG

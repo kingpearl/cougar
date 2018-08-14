@@ -71,6 +71,14 @@ fi
 # sudo apt-get -y install $PKG && touch .installed-$PKG
 # fi
 
+# PKG=p7zip-full
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install 7Z"
+# sudo apt-get -y install $PKG && touch .installed-$PKG
+# fi
+
+
 # PKG=openjdk-8-jdk
 # if [ ! -f .installed-$PKG ];
 # then
