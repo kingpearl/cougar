@@ -180,21 +180,21 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt-get update
 # RUN apt-get install $PKG-ce
 
-# ENV PKG=mongodb-linux-x86_64-4.0.3
+# ENV PKG=mongodb-linux-x86_64-4.0.4
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo
 
-# ENV PKG=postgresql-10
+# ENV PKG=postgresql-11
 # RUN echo "Install PostgreSQL"
 # RUN touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
 # RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 # RUN apt-get update
-# RUN apt-get -y install $PKG postgresql-contrib-10
+# RUN apt-get -y install $PKG postgresql-contrib-11
 # RUN psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 
-# ENV PKG=redis-5.0.0
+# ENV PKG=redis-5.0.2
 # RUN echo "Install Redis"
 # RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
 
