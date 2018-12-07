@@ -303,7 +303,7 @@ npm install -g npm
 # mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && sudo mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo && touch .installed-$PKG
 # fi
 
-# PKG=postgresql-10
+# PKG=postgresql-11
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install PostgreSQL"
