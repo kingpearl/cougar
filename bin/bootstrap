@@ -310,7 +310,7 @@ npm install -g npm
 # sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 # sudo apt-get update
-# sudo apt-get -y install $PKG postgresql-contrib-10 && touch .installed-$PKG
+# sudo apt-get -y install $PKG postgresql-contrib-11 && touch .installed-$PKG
 # sudo -u postgres psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # sudo -u postgres createdb -O pearl pearl
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
