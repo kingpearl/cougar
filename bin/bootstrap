@@ -150,7 +150,7 @@ fi
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-VER=v10.14.1
+VER=v10.14.2
 PKG=node-$VER-linux-x64
 if [ ! -f .installed-$PKG ];
 then
@@ -316,7 +316,7 @@ npm install -g npm
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 # fi
 
-# PKG=redis-5.0.2
+# PKG=redis-5.0.3
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Redis"
