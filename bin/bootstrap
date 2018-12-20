@@ -296,7 +296,7 @@ npm install -g npm
 # sudo apt-get install $PKG-ce
 # fi
 
-# PKG=mongodb-linux-x86_64-4.0.4
+# PKG=mongodb-linux-x86_64-4.0.5
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install MongoDB"
