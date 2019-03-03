@@ -100,6 +100,13 @@ fi
 # sudo apt-get -y install $PKG && touch .installed-$PKG
 # fi
 
+# PKG=lynx
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install Lynx"
+# sudo apt-get -y install $PKG && touch .installed-$PKG
+# fi
+
 # PKG=newsboat
 # if [ ! -f .installed-$PKG ];
 # then
