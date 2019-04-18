@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:19.04
 RUN mkdir -p /var/tmp && cd /var/tmp/
 
 ENV ME=$(whoami)
