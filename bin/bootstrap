@@ -24,13 +24,13 @@ fi
 # fi
 
 echo "Apt update"
-sudo apt-get update
+sudo apt update
 
 PKG=git
 if [ ! -f .installed-$PKG ];
 then
 echo "Apt install Git"
-sudo apt-get -y install $PKG && touch .installed-$PKG
+sudo apt install -y $PKG && touch .installed-$PKG
 fi
 
 # Set permissions
@@ -55,97 +55,90 @@ touch .installed-$PKG
 fi
 
 echo "Apt upgrade"
-sudo apt-get -y upgrade
+sudo apt -y upgrade
 
 PKG=make-gcc-ssl
 if [ ! -f .installed-$PKG ];
 then
 echo "Apt install Make & GCC & SSL"
-sudo apt-get -y install build-essential libssl-dev && touch .installed-$PKG
+sudo apt install -y build-essential libssl-dev && touch .installed-$PKG
 fi
 
 # PKG=unzip
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install unzip"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
-# fi
-
-# PKG=p7zip-full
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install 7Z"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=openjdk-8-jdk
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install OpenJDK"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=htop
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install htop"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=mutt
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install Mutt"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=lynx
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install Lynx"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=newsboat
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install Newsboat"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=openvpn
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install OpenVPN"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=openconnct
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install OpenConnect"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=stoken
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install stoken"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=aspell
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install Aspell"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=silversearcher-ag
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install The Silver Searcher"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=jsduck
@@ -166,21 +159,21 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install Git Flow"
-# sudo apt-get -y install $PKG && touch .installed-$PKG
+# sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
 # PKG=jpegoptim
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install Jpegoptim"
-# apt-get -y install $PKG
+# apt install -y $PKG
 # fi
 
 # PKG=optipng
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install OptiPNG"
-# apt-get -y install $PKG
+# apt install -y $PKG
 # fi
 
 # PKG=phantomjs-2.1.1-linux-x86_64
@@ -201,7 +194,7 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# sudo apt-get -y install libcurl4-gnutls-dev
+# sudo apt install -y libcurl4-gnutls-dev
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
@@ -327,10 +320,10 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Watchman"
-# sudo apt-get -y install autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# sudo apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-# PKG=go1.13.linux-amd64
+# PKG=go1.13.4.linux-amd64
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Go"
@@ -341,14 +334,12 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Docker"
-# sudo apt-get update
-# sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
-# sudo apt-get update
-# sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+# sudo apt update
+# sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-# sudo apt-get update
-# sudo apt-get install $PKG-ce
+# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# sudo apt update
+# sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && touch .installed-$PKG
 # fi
 
 # PKG=mongodb-linux-x86_64-4.2.1
@@ -364,14 +355,14 @@ npm install -g npm
 # echo "Install PostgreSQL"
 # sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-# sudo apt-get update
-# sudo apt-get -y install $PKG postgresql-contrib-11 && touch .installed-$PKG
+# sudo apt update
+# sudo apt install -y $PKG postgresql-contrib-11 && touch .installed-$PKG
 # sudo -u postgres psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # sudo -u postgres createdb -O pearl pearl
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 # fi
 
-# PKG=redis-5.0.5
+# PKG=redis-5.0.6
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Redis"
@@ -427,6 +418,13 @@ npm install -g npm
 # npm install -g $PKG && touch .installed-$PKG
 # fi
 
+PKG=vim
+if [ ! -f .installed-$PKG ];
+then
+echo "Apt install Vim"
+sudo apt install -y vim && touch .installed-$PKG
+fi
+
 PKG=vundle
 if [ ! -f .installed-$PKG ];
 then
@@ -436,3 +434,10 @@ vim +PluginInstall +qall
 echo "colorscheme base16-spacemacs" >> ~/.vimrc
 touch .installed-$PKG
 fi
+
+# PKG=zsh
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install Zsh"
+# sudo apt install -y $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
+# fi

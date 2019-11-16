@@ -6,15 +6,15 @@ ENV PKG=profile
 # RUN locale-gen en_US.UTF-8
 
 RUN echo "Apt update"
-RUN apt-get update
+RUN apt update
 
 ENV PKG=curl
 RUN echo "Apt install Curl"
-RUN apt-get -y install $PKG
+RUN apt install -y $PKG
 
 ENV PKG=git
 RUN echo "Apt install Git"
-RUN apt-get -y install $PKG
+RUN apt install -y $PKG
 
 # Set permissions
 # ENV PKG=permissions
@@ -30,31 +30,31 @@ RUN echo "Create $PKG"
 RUN ["/bin/bash", "-c", "mkdir -p ~/.vim/{backups,bundle,swaps,undo}"]
 
 RUN echo "Apt upgrade"
-RUN apt-get -y upgrade
+RUN apt upgrade -y
 
 ENV PKG=make-gcc-ssl
 RUN echo "Apt install Make & GCC & SSL"
-RUN apt-get -y install build-essential libssl-dev
+RUN apt install -y build-essential libssl-dev
 
 ENV PKG=python
 RUN echo "Apt install Python"
-RUN apt-get -y install $PKG
+RUN apt install -y $PKG
 
 # ENV PKG=unzip
 # RUN echo "Apt install unzip"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=p7zip-full
 # RUN echo "Apt install 7Z"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=openjdk-8-jdk
 # RUN echo "Apt install OpenJDK"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=silversearcher-ag
 # RUN echo "Apt install The Silver Searcher"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=jsduck
 # RUN echo "Gem install JsDuck"
@@ -66,15 +66,15 @@ RUN apt-get -y install $PKG
 
 # ENV PKG=git-flow
 # RUN echo "Apt install Git Flow"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=jpegoptim
 # RUN echo "Apt install Jpegoptim"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=optipng
 # RUN echo "Apt install OptiPNG"
-# RUN apt-get -y install $PKG
+# RUN apt install -y $PKG
 
 # ENV PKG=phantomjs-2.1.1-linux-x86_64
 # RUN echo "Install $PKG"
@@ -86,7 +86,7 @@ RUN apt-get -y install $PKG
 
 # ENV PKG=clib
 # RUN echo "Install $PKG"
-# RUN apt-get -y install libcurl4-gnutls-dev
+# RUN apt install -y libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
 ENV VER=v12.13.0
@@ -162,23 +162,20 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # ENV VER=v4.9.0
 # ENV PKG=watchman
 # RUN echo "Install Watchman"
-# RUN apt-get -y install autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
+# RUN apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
 
-# ENV PKG=go1.13.linux-amd64
+# ENV PKG=go1.13.4.linux-amd64
 # RUN echo "Install Go"
 # RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
 
 # ENV PKG=docker
 # RUN echo "Install Docker"
-# RUN apt-get update
-# RUN apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
-# RUN apt-get update
-# RUN apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+# RUN apt update
+# RUN apt install -y apt-transport-https ca-certificates curl software-properties-common
 # RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# RUN apt-key fingerprint 0EBFCD88
 # RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-# RUN apt-get update
-# RUN apt-get install $PKG-ce
+# RUN apt update
+# RUN apt install $PKG-ce $PKG-ce-cli containerd.io
 
 # ENV PKG=mongodb-linux-x86_64-4.2.1
 # RUN echo "Install MongoDB"
@@ -188,13 +185,13 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "Install PostgreSQL"
 # RUN touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
 # RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-# RUN apt-get update
-# RUN apt-get -y install $PKG postgresql-contrib-11
+# RUN apt update
+# RUN apt install -y $PKG postgresql-contrib-11
 # RUN psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 
-# ENV PKG=redis-5.0.5
+# ENV PKG=redis-5.0.6
 # RUN echo "Install Redis"
 # RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
 
@@ -226,8 +223,16 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "NPM install psy"
 # RUN npm install -g $PKG
 
+ENV PKG=vim
+RUN echo "Apt install unzip"
+RUN apt install -y $PKG
+
 # ENV PKG=vundle
 # RUN echo "Install Vundle"
 # RUN mkdir -p $PKG && curl -sL https://github.com/gmarik/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && mv $PKG ~/.vim/bundle/$PKG
 # RUN vim +BundleInstall! +qall
 # RUN echo "colorscheme base16-spacemacs" >> ~/.vimrc
+
+# ENV PKG=zsh
+# RUN ehco "Apt install Zsh"
+# RUN apt install -y $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
