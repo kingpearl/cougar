@@ -175,7 +175,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 # RUN apt update
-# RUN apt install $PKG-ce $PKG-ce-cli containerd.io
+# RUN apt install $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER
 
 # ENV PKG=mongodb-linux-x86_64-4.2.1
 # RUN echo "Install MongoDB"

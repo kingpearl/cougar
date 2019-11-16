@@ -339,7 +339,7 @@ npm install -g npm
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 # sudo apt update
-# sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && touch .installed-$PKG
+# sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER && touch .installed-$PKG
 # fi
 
 # PKG=mongodb-linux-x86_64-4.2.1
