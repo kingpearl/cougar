@@ -36,16 +36,12 @@ ENV PKG=make-gcc-ssl
 RUN echo "Apt install Make & GCC & SSL"
 RUN apt install -y build-essential libssl-dev
 
-ENV PKG=python
-RUN echo "Apt install Python"
-RUN apt install -y $PKG
-
-# ENV PKG=unzip
-# RUN echo "Apt install unzip"
+# ENV PKG=libarchive-tools
+# RUN echo "Apt install Tar"
 # RUN apt install -y $PKG
 
-# ENV PKG=p7zip-full
-# RUN echo "Apt install 7Z"
+# ENV PKG=python
+# RUN echo "Apt install Python"
 # RUN apt install -y $PKG
 
 # ENV PKG=openjdk-8-jdk
@@ -55,10 +51,6 @@ RUN apt install -y $PKG
 # ENV PKG=silversearcher-ag
 # RUN echo "Apt install The Silver Searcher"
 # RUN apt install -y $PKG
-
-# ENV PKG=jsduck
-# RUN echo "Gem install JsDuck"
-# RUN gem install $PKG
 
 # ENV PKG=git-extras
 # RUN echo "Install $PKG"

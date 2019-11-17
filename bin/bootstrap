@@ -64,10 +64,17 @@ echo "Apt install Make & GCC & SSL"
 sudo apt install -y build-essential libssl-dev && touch .installed-$PKG
 fi
 
-# PKG=unzip
+# PKG=libarchive-tools
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install unzip"
+# echo "Apt install Tar"
+# sudo apt install -y $PKG && touch .installed-$PKG
+# fi
+
+# PKG=python
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install Python"
 # sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
@@ -75,55 +82,6 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Apt install OpenJDK"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=htop
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install htop"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=mutt
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install Mutt"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=lynx
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install Lynx"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=newsboat
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install Newsboat"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=openvpn
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install OpenVPN"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=openconnct
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install OpenConnect"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=stoken
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install stoken"
 # sudo apt install -y $PKG && touch .installed-$PKG
 # fi
 
@@ -139,13 +97,6 @@ fi
 # then
 # echo "Apt install The Silver Searcher"
 # sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=jsduck
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Gem install JsDuck"
-# sudo gem install $PKG && touch .installed-$PKG
 # fi
 
 # PKG=git-extras
