@@ -1,4 +1,4 @@
-tar -xz --strip 1 -f Downloads/cougar-master.tar.gzz
+tar -xz --strip 1 -f Downloads/cougar-master.tar.gz && rm Downloads/*.tar.gz
 g c gh:kingpearl/panther.git
 rmdir .git && g init && g ca && g remote add origin gh:kingpearl/panther.git && g push origin master
 vagrant up && vagrant ssh
