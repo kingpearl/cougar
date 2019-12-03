@@ -216,7 +216,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN npm install -g $PKG
 
 ENV PKG=vim
-RUN echo "Apt install unzip"
+RUN echo "Apt install Vim"
 RUN apt install -y $PKG
 
 # ENV PKG=vundle
