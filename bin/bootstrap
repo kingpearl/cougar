@@ -300,11 +300,11 @@ npm install -g npm
 # sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER && touch .installed-$PKG
 # fi
 
-# PKG=mongodb-linux-x86_64-4.2.1
+# PKG=mongodb-linux-x86_64-ubuntu1804-4.2.1.tgz
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install MongoDB"
-# mkdir -p mongo && curl -sL http://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && sudo mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo && touch .installed-$PKG
+# mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && sudo mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo && touch .installed-$PKG
 # fi
 
 # PKG=postgresql-11
