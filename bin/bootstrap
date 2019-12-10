@@ -304,7 +304,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install MongoDB"
-# mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && sudo mkdir -p /var/lib/mongo && cd ../ && rm -fR mongo && touch .installed-$PKG
+# mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && cd ../ && sudo mkdir -p /var/lib/mongo && rm -fR mongo && touch .installed-$PKG
 # fi
 
 # PKG=postgresql-11
