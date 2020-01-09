@@ -156,7 +156,7 @@ fi
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-VER=v12.14.0
+VER=v12.14.1
 PKG=node-$VER-linux-x64
 if [ ! -f .installed-$PKG ];
 then
