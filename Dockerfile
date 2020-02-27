@@ -156,7 +156,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "Install Watchman"
 # RUN apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
 
-# ENV PKG=go1.13.7.linux-amd64
+# ENV PKG=go1.14.linux-amd64
 # RUN echo "Install Go"
 # RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
 
