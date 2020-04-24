@@ -173,16 +173,16 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt update
 # RUN apt install $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER
 
-# ENV PKG=mongodb-linux-x86_64-ubuntu1804-4.2.5.tgz
+# ENV PKG=mongodb-linux-x86_64-ubuntu1804-4.2.6.tgz
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cd ../ && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && rm -fR mongo
 
-# ENV PKG=postgresql-11
+# ENV PKG=postgresql-12
 # RUN echo "Install PostgreSQL"
 # RUN touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
 # RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 # RUN apt update
-# RUN apt install -y $PKG postgresql-contrib-11
+# RUN apt install -y $PKG postgresql-contrib-12
 # RUN psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
