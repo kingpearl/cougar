@@ -156,13 +156,17 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "Install Watchman"
 # RUN apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
 
-# ENV PKG=go1.14.1.linux-amd64
+# ENV PKG=go1.14.2.linux-amd64
 # RUN echo "Install Go"
 # RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
 
 # ENV PKG=rust
 # RUN echo "Install Rust"
 # RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# ENV PKG=deno
+# RUN echo "Install Deno"
+# RUN curl -fsSL https://deno.land/x/install/install.sh | sh && touch .installed-$PKG
 
 # ENV PKG=docker
 # RUN echo "Install Docker"
