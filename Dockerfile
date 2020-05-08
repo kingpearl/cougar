@@ -166,7 +166,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 
 # ENV PKG=deno
 # RUN echo "Install Deno"
-# RUN curl -fsSL https://deno.land/x/install/install.sh | sh && touch .installed-$PKG
+# RUN curl -fsSL https://raw.githubusercontent.com/denoland/deno_install/master/install.sh | sh && touch .installed-$PKG
 
 # ENV PKG=docker
 # RUN echo "Install Docker"

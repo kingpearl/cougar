@@ -299,7 +299,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Deno"
-# curl -fsSL https://deno.land/x/install/install.sh | sh && touch .installed-$PKG
+# curl -fsSL https://raw.githubusercontent.com/denoland/deno_install/master/install.sh | sh && touch .installed-$PKG
 # fi
 
 # PKG=docker
