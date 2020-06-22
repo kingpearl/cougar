@@ -177,7 +177,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt update
 # RUN apt install $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER
 
-# ENV PKG=mongodb-linux-x86_64-ubuntu1804-4.2.7.tgz
+# ENV PKG=mongodb-linux-x86_64-ubuntu1804-4.2.8.tgz
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cd ../ && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && rm -fR mongo
 
@@ -191,7 +191,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 
-# ENV PKG=redis-6.0.4
+# ENV PKG=redis-6.0.5
 # RUN echo "Install Redis"
 # RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
 
