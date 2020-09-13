@@ -177,7 +177,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt update
 # RUN apt install $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER
 
-# ENV PKG=mongodb-linux-x86_64-ubuntu2004-4.4.0
+# ENV PKG=mongodb-linux-x86_64-ubuntu2004-4.4.1
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cd ../ && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && rm -fR mongo
 
@@ -191,13 +191,13 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 
-# ENV PKG=redis-6.0.5
+# ENV PKG=redis-6.0.8
 # RUN echo "Install Redis"
 # RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
 
 # ENV PKG=consul
 # RUN echo "Install Consul"
-# RUN curl -sL https://releases.hashicorp.com/consul/1.8.0/consul_1.8.0_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
+# RUN curl -sL https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
 
 # ENV PKG=weave
 # RUN echo "Install Weave"

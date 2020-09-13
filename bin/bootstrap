@@ -314,7 +314,7 @@ npm install -g npm
 # sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER && touch .installed-$PKG
 # fi
 
-# PKG=mongodb-linux-x86_64-ubuntu2004-4.4.0
+# PKG=mongodb-linux-x86_64-ubuntu2004-4.4.1
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install MongoDB"
@@ -334,7 +334,7 @@ npm install -g npm
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 # fi
 
-# PKG=redis-6.0.5
+# PKG=redis-6.0.8
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Redis"
@@ -345,7 +345,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Consul"
-# curl -sL https://releases.hashicorp.com/consul/1.8.0/consul_1.8.0_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
+# curl -sL https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
 # fi
 
 # PKG=weave
