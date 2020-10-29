@@ -156,7 +156,7 @@ fi
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-VER=v12.19.0
+VER=v14.15.0
 PKG=node-$VER-linux-x64
 if [ ! -f .installed-$PKG ];
 then
@@ -345,7 +345,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Consul"
-# curl -sL https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
+# curl -sL https://releases.hashicorp.com/consul/1.8.5/consul_1.8.5_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
 # fi
 
 # PKG=weave
