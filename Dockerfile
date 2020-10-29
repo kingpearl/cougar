@@ -81,7 +81,7 @@ RUN apt install -y build-essential libssl-dev
 # RUN apt install -y libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
-ENV VER=v12.19.0
+ENV VER=v14.15.0
 ENV PKG=node-$VER-linux-x64
 RUN echo "Install Node"
 RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
@@ -197,7 +197,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 
 # ENV PKG=consul
 # RUN echo "Install Consul"
-# RUN curl -sL https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
+# RUN curl -sL https://releases.hashicorp.com/consul/1.8.5/consul_1.8.5_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
 
 # ENV PKG=weave
 # RUN echo "Install Weave"
