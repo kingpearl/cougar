@@ -156,7 +156,7 @@ fi
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-VER=v14.15.4
+VER=v14.15.5
 PKG=node-$VER-linux-x64
 if [ ! -f .installed-$PKG ];
 then
@@ -334,7 +334,7 @@ npm install -g npm
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 # fi
 
-# PKG=redis-6.0.9
+# PKG=redis-6.0.10
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Redis"
@@ -345,7 +345,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Consul"
-# curl -sL https://releases.hashicorp.com/consul/1.9.0/consul_1.9.0_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
+# curl -sL https://releases.hashicorp.com/consul/1.9.3/consul_1.9.3_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
 # fi
 
 # PKG=weave

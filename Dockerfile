@@ -81,7 +81,7 @@ RUN apt install -y build-essential libssl-dev
 # RUN apt install -y libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
-ENV VER=v14.15.4
+ENV VER=v14.15.5
 ENV PKG=node-$VER-linux-x64
 RUN echo "Install Node"
 RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
@@ -191,13 +191,13 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 
-# ENV PKG=redis-6.0.9
+# ENV PKG=redis-6.0.10
 # RUN echo "Install Redis"
 # RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
 
 # ENV PKG=consul
 # RUN echo "Install Consul"
-# RUN curl -sL https://releases.hashicorp.com/consul/1.9.0/consul_1.9.0_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
+# RUN curl -sL https://releases.hashicorp.com/consul/1.9.3/consul_1.9.3_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
 
 # ENV PKG=weave
 # RUN echo "Install Weave"
