@@ -197,7 +197,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 
 # ENV PKG=consul
 # RUN echo "Install Consul"
-# RUN curl -sL https://releases.hashicorp.com/consul/1.9.3/consul_1.9.3_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
+# RUN curl -sL https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
 
 # ENV PKG=weave
 # RUN echo "Install Weave"
