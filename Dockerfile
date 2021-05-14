@@ -1,9 +1,10 @@
-FROM ubuntu:20.10
+FROM ubuntu:21.04
 RUN mkdir -p /var/tmp && cd /var/tmp/
 
 ENV ME=$(whoami)
 ENV PKG=profile
-# RUN locale-gen en_US.UTF-8
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=America/New_York
 
 RUN echo "Apt update"
 RUN apt update
