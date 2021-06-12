@@ -192,13 +192,13 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN createdb -O pearl pearl
 # RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 
-# ENV PKG=redis-6.2.3
+# ENV PKG=redis-6.2.4
 # RUN echo "Install Redis"
 # RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
 
 # ENV PKG=consul
 # RUN echo "Install Consul"
-# RUN curl -sL https://releases.hashicorp.com/consul/1.9.5/consul_1.9.5_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
+# RUN curl -sL https://releases.hashicorp.com/consul/1.9.6/consul_1.9.6_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
 
 # ENV PKG=weave
 # RUN echo "Install Weave"
