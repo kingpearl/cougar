@@ -82,7 +82,7 @@ RUN apt install -y build-essential libssl-dev
 # RUN apt install -y libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
-ENV VER=v14.17.1
+ENV VER=v14.17.3
 ENV PKG=node-$VER-linux-x64
 RUN echo "Install Node"
 RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
@@ -157,7 +157,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "Install Watchman"
 # RUN apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
 
-# ENV PKG=go1.16.3.linux-amd64
+# ENV PKG=go1.16.6.linux-amd64
 # RUN echo "Install Go"
 # RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
 
@@ -178,7 +178,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN apt update
 # RUN apt install $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER
 
-# ENV PKG=mongodb-linux-x86_64-ubuntu2004-4.4.6
+# ENV PKG=mongodb-linux-x86_64-ubuntu2004-4.4.7
 # RUN echo "Install MongoDB"
 # RUN mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cd ../ && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && rm -fR mongo
 
