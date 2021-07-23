@@ -281,7 +281,7 @@ npm install -g npm
 # sudo apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-# PKG=go1.16.3.linux-amd64
+# PKG=go1.16.6.linux-amd64
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Go"
@@ -334,7 +334,7 @@ npm install -g npm
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
 # fi
 
-# PKG=redis-6.2.4
+# PKG=redis-6.2.5
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Redis"
@@ -345,7 +345,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Consul"
-# curl -sL https://releases.hashicorp.com/consul/1.10.0/consul_1.10.0_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
+# curl -sL https://releases.hashicorp.com/consul/1.10.1/consul_1.10.1_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
 # fi
 
 # PKG=weave
