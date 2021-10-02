@@ -345,7 +345,7 @@ npm install -g npm
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Consul"
-# curl -sL https://releases.hashicorp.com/consul/1.10.2/consul_1.10.2_linux_amd64.zip > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
+# curl -sL https://prl.io/7 > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
 # fi
 
 # PKG=weave
