@@ -321,14 +321,14 @@ npm install -g npm
 # mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && cd ../ && sudo mkdir -p /var/lib/mongo && rm -fR mongo && touch .installed-$PKG
 # fi
 
-# PKG=postgresql-12
+# PKG=postgresql
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install PostgreSQL"
-# sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
+# sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 # sudo apt update
-# sudo apt install -y $PKG postgresql-contrib-12 && touch .installed-$PKG
+# sudo apt install -y $PKG postgresql-contrib && touch .installed-$PKG
 # sudo -u postgres psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 # sudo -u postgres createdb -O pearl pearl
 # sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
