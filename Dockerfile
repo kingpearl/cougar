@@ -82,7 +82,7 @@ RUN apt install -y build-essential libssl-dev
 # RUN apt install -y libcurl4-gnutls-dev
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
-ENV VER=v16.13.0
+ENV VER=v16.13.1
 ENV PKG=node-$VER-linux-x64
 RUN echo "Install Node"
 RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
@@ -157,7 +157,7 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "Install Watchman"
 # RUN apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
 
-# ENV PKG=go1.17.3.linux-amd64
+# ENV PKG=go1.17.4.linux-amd64
 # RUN echo "Install Go"
 # RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
 
