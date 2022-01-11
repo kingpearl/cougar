@@ -156,7 +156,7 @@ fi
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-VER=v16.13.1
+VER=v16.13.2
 PKG=node-$VER-linux-x64
 if [ ! -f .installed-$PKG ];
 then
@@ -281,7 +281,7 @@ npm install -g npm
 # sudo apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-# PKG=go1.17.4.linux-amd64
+# PKG=go1.17.6.linux-amd64
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Go"
