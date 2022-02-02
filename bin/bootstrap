@@ -314,7 +314,7 @@ npm install -g npm
 # sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER && touch .installed-$PKG
 # fi
 
-# PKG=mongodb-linux-x86_64-ubuntu2004-5.0.5
+# PKG=mongodb-linux-x86_64-ubuntu2004-5.0.6
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install MongoDB"
