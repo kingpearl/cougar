@@ -1,11 +1,7 @@
-tar -xz --strip 1 -f Downloads/cougar-master.tar.gz && rm Downloads/*.tar.gz
-g c gh:kingpearl/panther.git
-rmdir .git && g init && g ca && g remote add origin gh:kingpearl/panther.git && g push origin master
-vagrant up && vagrant ssh
+sudo dd if=/dev/sda conv=sync,noerror bs=64K | gzip -c > panther.img.gz
+gunzip -c panther.img.gz | sudo dd bs=64K of=/dev/sda
+tar -xz --strip 1 -f Downloads/cougar-master.tar.gz
 date '+%s'
-sudo apt update
-sudo apt upgrade -y && sudo apt dist-upgrade -y
-sudo apt autoremove -y
 docker build -t kingpearl/cougar:0.9.41 .
 docker push kingpearl/cougar:0.9.41
 docker run -p 3000:3000 -itv ~/:/docker kingpearl/cougar:0.9.41 bash
