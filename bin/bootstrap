@@ -111,6 +111,13 @@ fi
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
+PKG=paru
+if [ ! -f .installed-$PKG ];
+then
+echo "Install Paru"
+git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
+fi
+
 PKG=libarchive
 if [ ! -f .installed-$PKG ];
 then
@@ -150,7 +157,7 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=git-flow
@@ -164,7 +171,7 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=clib
@@ -172,35 +179,35 @@ fi
 # then
 # echo "Install $PKG"
 # sudo pacman -S --noconfirm --needed libcurl-gnutls
-# mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=every
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=flash
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/kingpearl/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/kingpearl/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=mon
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=mad
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
 # PKG=zsh
@@ -316,77 +323,77 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install psy"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=now
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Now"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=yarn
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Yarn"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=bower
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Bower"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=browserify
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Browserify"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=duo
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Duo"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=webpack
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install $PKG"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=create-react-app
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Create React App"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=create-react-native-app
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Create React Native App"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=react-native-cli
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install React Native CLI"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=particle-cli
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Particle"
-# npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=postgresql
@@ -399,8 +406,8 @@ fi
 # PKG=mongodb-bin
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install MongoDB"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# echo "Paru install MongoDB"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=redis
@@ -485,13 +492,6 @@ if [ ! -f .installed-$PKG ];
 then
 echo "Pacman install Gnome Tweaks"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
-
-PKG=paru
-if [ ! -f .installed-$PKG ];
-then
-echo "Install Paru"
-git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
 fi
 
 # PKG=flatpak

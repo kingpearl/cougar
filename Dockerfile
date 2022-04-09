@@ -66,6 +66,10 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN echo "Pacman install OpenJDK"
 # RUN pacman -S --noconfirm --needed $PKG
 
+# ENV PKG=paru
+# RUN echo "Install Paru"
+# RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
+
 ENV PKG=libarchive
 RUN echo "Pacman install Tar"
 RUN pacman -S --noconfirm --needed $PKG
@@ -234,8 +238,8 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN pacman -S --noconfirm --needed $PKG
 
 # ENV PKG=mongodb-bin
-# RUN echo "Pacman install MongoDB"
-# RUN pacman -S --noconfirm --needed $PKG
+# RUN echo "Paru install MongoDB"
+# RUN paru -S --noconfirm --needed $PKG
 
 # ENV PKG=redis
 # RUN echo "Pacman install Redis"
@@ -287,10 +291,6 @@ RUN pacman -S --noconfirm --needed $PKG
 # ENV PKG=gnome-tweaks
 # RUN echo "Pacman install Gnome Tweaks"
 # RUN pacman -S --noconfirm --needed $PKG
-
-# ENV PKG=paru
-# RUN echo "Install Paru"
-# RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
 
 # ENV PKG=flatpak
 # RUN echo "Pacman install Flatpak"
