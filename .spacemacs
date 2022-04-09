@@ -57,6 +57,7 @@ values."
      restclient
      spell-checking
      syntax-checking
+     prettier
      typescript
      version-control
      )

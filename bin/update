@@ -1,17 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ##
 # Pearl Update
-# Copyright(c) 2012 King Pearl LLC
-# MIT Licensed
+# Copyright(c) 2022 King Pearl LLC
 ##
-echo "Apt update"
-sudo apt-get update
+mkdir -p /var/tmp && cd /var/tmp
 
-echo "Apt upgrade"
-sudo apt-get -y upgrade
+echo "Pacman update"
+sudo pacman -Syyu --noconfirm
 
-# echo "NPM update"
-npm install -g npm && npm update -g
+echo "Flatpak update"
+flatpak update -y
+
+echo "NPM update"
+sudo npm update -g
 
 echo "Vundle install/update"
 vim +BundleInstall! +qall

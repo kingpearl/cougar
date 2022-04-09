@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 ##
 # Pearl Bootstrap
-# Copyright(c) 2012 King Pearl LLC
-# MIT Licensed
+# Copyright(c) 2022 King Pearl LLC
 ##
 mkdir -p /var/tmp && cd /var/tmp/
 
@@ -10,34 +9,29 @@ ME=$(whoami)
 PKG=profile
 if [ ! -f .installed-$PKG ];
 then
-export HOME=/vagrant
 sudo locale-gen en_US.UTF-8
 touch .installed-$PKG
 fi
 
-# Set preferences
-# PKG=preferences
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Set preferences"
-# ~/.macOS && touch .installed-$PKG
-# fi
+# echo "System enable/start bluebooth"
+# sudo systemctl enable bluetooth.service
+# sudo systemctl start bluetooth.service
 
-echo "Apt update"
-sudo apt update
+echo "Pacman update"
+sudo pacman -Syyu --noconfirm
 
 PKG=curl
 if [ ! -f .installed-$PKG ];
 then
-echo "Apt install Curl"
-sudo apt install -y $PKG && touch .installed-$PKG
+echo "Pacman install Curl"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
 PKG=git
 if [ ! -f .installed-$PKG ];
 then
-echo "Apt install Git"
-sudo apt install -y $PKG && touch .installed-$PKG
+echo "Pacman install Git"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
 # Set permissions
@@ -45,8 +39,6 @@ PKG=permissions
 if [ ! -f .installed-$PKG ];
 then
 echo "Set $PKG"
-sudo chmod g+rwx /usr/local/{.,bin,etc,include,lib,sbin,share,src,share/man}
-sudo chgrp $ME /usr/local/{.,bin,etc,include,lib,sbin,share,src,share/man}
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 touch .installed-$PKG
@@ -58,52 +50,100 @@ if [ ! -f .installed-$PKG ];
 then
 echo "Create $PKG"
 mkdir -p ~/.vim/{backups,bundle,swaps,undo}
+# mkdir -p ~/Projects
+# mkdir -p ~/Machines
 touch .installed-$PKG
 fi
 
-echo "Apt upgrade"
-sudo apt upgrade -y
+PKG=intel-ucode
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Intel Microcode"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
 
 PKG=make-gcc-ssl
 if [ ! -f .installed-$PKG ];
 then
-echo "Apt install Make & GCC & SSL"
-sudo apt install -y build-essential libssl-dev && touch .installed-$PKG
+echo "Pacman install Make & GCC & SSL"
+sudo pacman -S --noconfirm --needed base-devel openssl && touch .installed-$PKG
 fi
-
-# PKG=libarchive-tools
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install Tar"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
 
 # PKG=python
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install Python"
-# sudo apt install -y $PKG && touch .installed-$PKG
+# echo "Pacman install Python"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-# PKG=openjdk-8-jdk
+# PKG=go
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install OpenJDK"
-# sudo apt install -y $PKG && touch .installed-$PKG
+# echo "Pacman install Go"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+PKG=rust
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Rust"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+PKG=nodejs-lts-gallium
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Node"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+# PKG=deno
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Deno"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=jdk8-openjdk
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install OpenJDK"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+PKG=libarchive
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Tar"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+# PKG=exfat
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install exFat"
+# sudo pacman -S --noconfirm --needed exfatprogs exfat-utils && touch .installed-$PKG
+# fi
+
+# PKG=winehq
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install WineHQ"
+# sudo pacman -S --noconfirm --needed wine winetricks && touch .installed-$PKG
 # fi
 
 # PKG=aspell
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install Aspell"
-# sudo apt install -y $PKG && touch .installed-$PKG
+# echo "Pacman install Aspell"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-# PKG=silversearcher-ag
+# PKG=the_silver_searcher
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install The Silver Searcher"
-# sudo apt install -y $PKG && touch .installed-$PKG
+# echo "Pacman install The Silver Searcher"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=git-extras
@@ -116,29 +156,8 @@ fi
 # PKG=git-flow
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install Git Flow"
-# sudo apt install -y $PKG && touch .installed-$PKG
-# fi
-
-# PKG=jpegoptim
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install Jpegoptim"
-# apt install -y $PKG
-# fi
-
-# PKG=optipng
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Apt install OptiPNG"
-# apt install -y $PKG
-# fi
-
-# PKG=phantomjs-2.1.1-linux-x86_64
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/$PKG.tar.bz2 | tar -xj --strip 1 -C $PKG && cd $PKG && cp -pR bin/* /usr/local/bin/ && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# echo "Install Git Flow"
+# wget --no-check-certificate -q https://raw.github.com/petervanderdoes/gitflow/develop/contrib/gitflow-installer.sh && chmod +x gitflow-installer.sh && sudo ./gitflow-installer.sh install stable && rm -fr gitflow* && touch .installed-$PKG
 # fi
 
 # PKG=burl
@@ -152,207 +171,8 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install $PKG"
-# sudo apt install -y libcurl4-gnutls-dev
+# sudo pacman -S --noconfirm --needed libcurl-gnutls
 # mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
-# fi
-
-VER=v16.14.2
-PKG=node-$VER-linux-x64
-if [ ! -f .installed-$PKG ];
-then
-echo "Install Node"
-mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node && touch .installed-$PKG
-fi
-
-# echo "Update NPM"
-npm install -g npm
-
-# PKG=yarn
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Yarn"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=bower
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Bower"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=duo
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Duo"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=browserify
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Browserify"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=webpack
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install $PKG"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=typescript
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install TypeScript"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=grunt-cli
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Grunt"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=gulp
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Gulp"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=yo
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Yeoman"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=create-react-app
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Create React App"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=create-react-native-app
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Create React Native App"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=react-native-cli
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install React Native CLI"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=react-vr-cli
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install React VR CLI"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=cordova
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Cordova"
-# npm install -g $PKG && touch .installed-$PKG
-# npm install -g ios-sim ios-deploy
-# fi
-
-# PKG=ionic
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Ionic"
-# npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# VER=v4.9.0
-# PKG=watchman
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Watchman"
-# sudo apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
-# fi
-
-# PKG=go1.18.linux-amd64
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Go"
-# mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go && touch .installed-$PKG
-# fi
-
-# PKG=rust
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Rust"
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && touch .installed-$PKG
-# fi
-
-# PKG=deno
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Deno"
-# curl -fsSL https://raw.githubusercontent.com/denoland/deno_install/master/install.sh | sh && touch .installed-$PKG
-# fi
-
-# PKG=docker
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Docker"
-# sudo apt update
-# sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-# sudo apt update
-# sudo apt install -y $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER && touch .installed-$PKG
-# fi
-
-# PKG=mongodb-linux-x86_64-ubuntu2004-5.0.6
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install MongoDB"
-# mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cp -R bin /usr/local/ && cd ../ && sudo mkdir -p /var/lib/mongo && rm -fR mongo && touch .installed-$PKG
-# fi
-
-# PKG=postgresql
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install PostgreSQL"
-# sudo touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-# sudo apt update
-# sudo apt install -y $PKG postgresql-contrib && touch .installed-$PKG
-# sudo -u postgres psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
-# sudo -u postgres createdb -O pearl pearl
-# sudo -u postgres psql pearl --command 'CREATE EXTENSION "pgcrypto";'
-# fi
-
-# PKG=redis-6.2.6
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Redis"
-# mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && sudo mkdir -p /var/lib/redis && rm -fR redis && touch .installed-$PKG
-# fi
-
-# PKG=consul
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Consul"
-# curl -sL https://prl.io/7 > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/ && touch .installed-$PKG
-# fi
-
-# PKG=weave
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Weave"
-# curl -sL https://git.io/$PKG > /usr/local/bin/$PKG && sudo chmod a+x /usr/local/bin/$PKG && touch .installed-$PKG
 # fi
 
 # PKG=every
@@ -383,18 +203,18 @@ npm install -g npm
 # mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-# PKG=psy
+# PKG=zsh
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "NPM install psy"
-# npm install -g $PKG && touch .installed-$PKG
+# echo "Pacman install Zsh"
+# sudo pacman -S --noconfirm --needed $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
 # fi
 
 PKG=vim
 if [ ! -f .installed-$PKG ];
 then
-echo "Apt install Vim"
-sudo apt install -y $PKG && touch .installed-$PKG
+echo "Pacman install Vim"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
 PKG=vundle
@@ -407,9 +227,375 @@ echo "colorscheme base16-spacemacs" >> ~/.vimrc
 touch .installed-$PKG
 fi
 
-# PKG=zsh
+# PKG=emacs
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Apt install Zsh"
-# sudo apt install -y $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
+# echo "Pacman install Emacs"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=spacemacs
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Spacemacs"
+# git clone https://github.com/syl20bnr/$PKG ~/.emacs.d
+# touch .installed-$PKG
+# fi
+
+PKG=htop
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Htop"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+# PKG=jpegoptim
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Apt install Jpegoptim"
+# sudo pacman -S --noconfirm --needed $PKG
+# fi
+
+# PKG=optipng
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install OptiPNG"
+# sudo pacman -S --noconfirm --needed $PKG
+# fi
+
+# PKG=mutt
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Mutt"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=lynx
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Lynx"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=newsboat
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Newsboat"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=openvpn
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install OpenVPN"
+# sudo pacman -S --noconfirm --needed $PKG networkmanager-$PKG && touch .installed-$PKG
+# fi
+
+# PKG=openconnect
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install OpenConnect"
+# sudo pacman -S --noconfirm --needed $PKG networkmanager-$PKG && touch .installed-$PKG
+# fi
+
+# PKG=stoken
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install stoken"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+PKG=npm
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install NPM"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+# PKG=psy
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install psy"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=now
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Now"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=yarn
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Yarn"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=bower
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Bower"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=browserify
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Browserify"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=duo
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Duo"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=webpack
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install $PKG"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=create-react-app
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Create React App"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=create-react-native-app
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Create React Native App"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=react-native-cli
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install React Native CLI"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=particle-cli
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Particle"
+# npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=postgresql
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install PostgreSQL"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=mongodb-bin
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install MongoDB"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=redis
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Redis"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+PKG=docker
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Docker"
+sudo pacman -S --noconfirm --needed $PKG
+# sudo systemctl enable docker.service
+# sudo systemctl start docker.service
+# sudo systemctl enable containerd.service
+# sudo systemctl start containerd.service
+touch .installed-$PKG
+fi
+
+PKG=kvm
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install KVM"
+sudo pacman -S --noconfirm --needed qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat edk2-ovmf dmidecode
+sudo usermod -aG libvirt $USER
+sudo systemctl enable systemd-resolved.service
+sudo systemctl start systemd-resolved.service
+# sudo systemctl enable libvirtd.service
+# sudo systemctl start libvirtd.service
+# sudo virsh net-start default
+# sudo virsh net-autostart default
+touch .installed-$PKG
+fi
+
+# PKG=terraform
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Terraform"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=up
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Apex"
+# curl https://raw.githubusercontent.com/apex/up/master/install.sh | bash
+# touch .installed-$PKG
+# fi
+
+# PKG=consul-bin
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Install Consul"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+PKG=papirus-icon-theme
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Papirus Icon Theme"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+PKG=gnome-shell-extensions
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Gnome Shell Extensions"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+PKG=gnome-themes-extra
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Gnome Themes Extra"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+PKG=gnome-tweaks
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Gnome Tweaks"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+PKG=paru
+if [ ! -f .installed-$PKG ];
+then
+echo "Install Paru"
+git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
+fi
+
+# PKG=flatpak
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Flatpak"
+# sudo pacman -S --noconfirm --needed $PKG && sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && touch .installed-$PKG
+# fi
+
+# PKG=android-studio
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Android Studio"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+PKG=visual-studio-code-bin
+if [ ! -f .installed-$PKG ];
+then
+echo "Paru install Visual Studio Code"
+paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+# PKG=datagrip-jre
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Datagrip"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=postman-bin
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Postman"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+
+PKG=firefox
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Firefox"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+PKG=google-chrome
+if [ ! -f .installed-$PKG ];
+then
+echo "Paru install Google Chrome"
+paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
+# PKG=evolution
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Evolution"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=slack-desktop
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Slack"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=teams
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Microsoft Teams"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=zoom
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Zoom"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=gimp
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Gimp"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=spotify
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Spotify"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=steam
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Steam"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=lutris
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Lutris"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi

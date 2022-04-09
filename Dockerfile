@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM archlinux
 RUN mkdir -p /var/tmp && cd /var/tmp/
 
 ENV ME=$(whoami)
@@ -6,22 +6,24 @@ ENV PKG=profile
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 
-RUN echo "Apt update"
-RUN apt update
+# RUN echo "System enable/start bluebooth"
+# RUN systemctl enable bluetooth.service
+# RUN systemctl start bluetooth.service
+
+RUN echo "Pacman update"
+RUN pacman -Syyu --noconfirm
 
 ENV PKG=curl
-RUN echo "Apt install Curl"
-RUN apt install -y $PKG
+RUN echo "Pacman install Curl"
+RUN pacman -S --noconfirm --needed $PKG
 
 ENV PKG=git
-RUN echo "Apt install Git"
-RUN apt install -y $PKG
+RUN echo "Pacman install Git"
+RUN pacman -S --noconfirm --needed $PKG
 
 # Set permissions
 # ENV PKG=permissions
 # RUN echo "Set $PKG"
-# RUN ["/bin/bash", "-c", "chmod g+rwx /usr/local/{.,bin,etc,include,lib,sbin,share,src,share/man}"]
-# RUN ["/bin/bash", "-c", "chgrp $ME /usr/local/{.,bin,etc,include,lib,sbin,share,src,share/man}"]
 # RUN chmod 700 ~/.ssh
 # RUN chmod 600 ~/.ssh/*
 
@@ -29,66 +31,165 @@ RUN apt install -y $PKG
 ENV PKG=workspace
 RUN echo "Create $PKG"
 RUN ["/bin/bash", "-c", "mkdir -p ~/.vim/{backups,bundle,swaps,undo}"]
+# RUN ["/bin/bash", "-c", "mkdir -p ~/Projects"]
+# RUN ["/bin/bash", "-c", "mkdir -p ~/Machines"]
 
-RUN echo "Apt upgrade"
-RUN apt upgrade -y
+# ENV PKG=intel-ucode
+# RUN echo "Pacman install Intel Microcode"
+# RUN pacman -S --noconfirm --needed $PKG
 
 ENV PKG=make-gcc-ssl
-RUN echo "Apt install Make & GCC & SSL"
-RUN apt install -y build-essential libssl-dev
-
-# ENV PKG=libarchive-tools
-# RUN echo "Apt install Tar"
-# RUN apt install -y $PKG
+RUN echo "Pacman install Make & GCC & SSL"
+RUN pacman -S --noconfirm --needed base-devel openssl
 
 # ENV PKG=python
-# RUN echo "Apt install Python"
-# RUN apt install -y $PKG
+# RUN echo "Pacman install Python"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=openjdk-8-jdk
-# RUN echo "Apt install OpenJDK"
-# RUN apt install -y $PKG
+# ENV PKG=go
+# RUN echo "Pacman install Go"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=silversearcher-ag
-# RUN echo "Apt install The Silver Searcher"
-# RUN apt install -y $PKG
+ENV PKG=rust
+RUN echo "Pacman install Rust"
+RUN pacman -S --noconfirm --needed $PKG
+
+ENV PKG=nodejs-lts-gallium
+RUN echo "Pacman install Node"
+RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=deno
+# RUN echo "Pacman install Deno"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=jdk8-openjdk
+# RUN echo "Pacman install OpenJDK"
+# RUN pacman -S --noconfirm --needed $PKG
+
+ENV PKG=libarchive
+RUN echo "Pacman install Tar"
+RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=exfat
+# RUN echo "Pacman install exFat"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=winehq
+# RUN echo "Pacman install WineHQ"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=aspell
+# RUN echo "Pacman install Aspell"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=the_silver_searcher
+# RUN echo "Pacman install The Silver Searcher"
+# RUN pacman -S --noconfirm --needed $PKG
 
 # ENV PKG=git-extras
 # RUN echo "Install $PKG"
 # RUN mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
 
 # ENV PKG=git-flow
-# RUN echo "Apt install Git Flow"
-# RUN apt install -y $PKG
-
-# ENV PKG=jpegoptim
-# RUN echo "Apt install Jpegoptim"
-# RUN apt install -y $PKG
-
-# ENV PKG=optipng
-# RUN echo "Apt install OptiPNG"
-# RUN apt install -y $PKG
-
-# ENV PKG=phantomjs-2.1.1-linux-x86_64
-# RUN echo "Install $PKG"
-# RUN mkdir -p $PKG && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/$PKG.tar.bz2 | tar -xj --strip 1 -C $PKG && cd $PKG && cp -pR bin/* /usr/local/bin/ && cd ../ && rm -fR $PKG
+# RUN echo "Install Git Flow"
+# RUN ["/bin/bash", "-c", "wget --no-check-certificate -q https://raw.github.com/petervanderdoes/gitflow/develop/contrib/gitflow-installer.sh && chmod +x gitflow-installer.sh && ./gitflow-installer.sh install stable && rm -fr gitflow"]
 
 # ENV PKG=burl
 # RUN echo "Install $PKG"
-# RUN mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
+# RUN mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
 
 # ENV PKG=clib
 # RUN echo "Install $PKG"
-# RUN apt install -y libcurl4-gnutls-dev
-# RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
+# RUN pacman -S --noconfirm --needed libcurl-gnutls
+# RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
 
-ENV VER=v16.14.2
-ENV PKG=node-$VER-linux-x64
-RUN echo "Install Node"
-RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/$PKG.tar.gz | tar -xz --strip 1 -C node && cd node && cp -R {bin,lib,share} /usr/local/ && cd ../ && rm -fR node"]
+# ENV PKG=every
+# RUN echo "Install $PKG"
+# RUN ["/bin/bash", "-c", "curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
 
-# RUN echo "Update NPM"
-# RUN npm install -g npm
+# ENV PKG=flash
+# RUN echo "Install $PKG"
+#  RUN ["/bin/bash", "-c", "curl -sL https://github.com/kingpearl/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
+
+# ENV PKG=mon
+# RUN echo "Install $PKG"
+# RUN ["/bin/bash", "-c", "curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
+
+# ENV PKG=mad
+# RUN echo "Install $PKG"
+#  RUN ["/bin/bash", "-c", "curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
+
+# ENV PKG=zsh
+# RUN echo "Pacman install Zsh"
+# RUN pacman -S --noconfirm --needed $PKG
+# RUN ["/bin/bash", "-c", 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"']
+
+ENV PKG=vim
+RUN echo "Pacman install Vim"
+RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=vundle
+# RUN echo "Install Vundle"
+# RUN pacman -S --noconfirm --needed $PKG
+# RUN ["/bin/bash", "-c", "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"]
+# RUN ["/bin/bash", "-c", "vim +PluginInstall +qall;"]
+# RUN ["/bin/bash", "-c", 'echo "colorscheme base16-spacemacs" >> ~/.vimrc']
+
+# ENV PKG=emacs
+# RUN echo "Pacman install Emacs"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=spacemacs
+# RUN echo "Install Spacemacs"
+# RUN ["/bin/bash", "-c", "git clone https://github.com/syl20bnr/$PKG ~/.emacs.d"]
+
+ENV PKG=htop
+RUN echo "Pacman install Htop"
+RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=jpegoptim
+# RUN echo "Pacman install Jpegoptim"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=optipng
+# RUN echo "Pacman install OptiPNG"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=mutt
+# RUN echo "Pacman install Mutt"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=lynx
+# RUN echo "Pacman install Lynx"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=newsboat
+# RUN echo "Pacman install Newsboat"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=openvpn
+# RUN echo "Pacman install OpenVPN"
+# RUN pacman -S --noconfirm --needed $PKG networkmanager-$PKG
+
+# ENV PKG=openconnect
+# RUN echo "Pacman install OpenConnect"
+# RUN pacman -S --noconfirm --needed $PKG networkmanager-$PKG
+
+# ENV PKG=stoken
+# RUN echo "Pacman install Stoken"
+# RUN pacman -S --noconfirm --needed $PKG
+
+ENV PKG=npm
+RUN echo "Pacman install NPM"
+RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=psy
+# RUN echo "NPM install psy"
+# RUN npm install -g $PKG
+
+# ENV PKG=now
+# RUN echo "NPM install now"
+# RUN npm install -g $PKG
 
 # ENV PKG=yarn
 # RUN echo "NPM install Yarn"
@@ -98,34 +199,18 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "NPM install Bower"
 # RUN npm install -g $PKG
 
+# ENV PKG=browserify
+# RUN echo "NPM install Browserify"
+# RUN npm install -g $PKG
+
 # ENV PKG=duo
 # RUN if [ ! -f .installed-$PKG ];
 # RUN then
 # RUN echo "NPM install Duo"
 # RUN npm install -g $PKG
 
-# ENV PKG=browserify
-# RUN echo "NPM install Browserify"
-# RUN npm install -g $PKG
-
 # ENV PKG=webpack
 # RUN echo "NPM install $PKG"
-# RUN npm install -g $PKG
-
-# ENV PKG=typescript
-# RUN echo "NPM install TypeScript"
-# RUN npm install -g $PKG
-
-# ENV PKG=grunt-cli
-# RUN echo "NPM install Grunt"
-# RUN npm install -g $PKG
-
-# ENV PKG=gulp
-# RUN echo "NPM install Gulp"
-# RUN npm install -g $PKG
-
-# ENV PKG=yo
-# RUN echo "NPM install Yeoman"
 # RUN npm install -g $PKG
 
 # ENV PKG=create-react-app
@@ -140,100 +225,130 @@ RUN ["/bin/bash", "-c", "mkdir -p node && curl -sL https://nodejs.org/dist/$VER/
 # RUN echo "NPM install React Native CLI"
 # RUN npm install -g $PKG
 
-# ENV PKG=react-vr-cli
-# RUN echo "NPM install React VR CLI"
+# ENV PKG=particle-cli
+# RUN echo "NPM install React Native CLI"
 # RUN npm install -g $PKG
-
-# ENV PKG=cordova
-# RUN echo "NPM install Cordova"
-# RUN npm install -g $PKG
-
-# ENV PKG=ionic
-# RUN echo "NPM install Ionic"
-# RUN npm install -g $PKG
-
-# ENV VER=v4.9.0
-# ENV PKG=watchman
-# RUN echo "Install Watchman"
-# RUN apt install -y autoconf automake && curl -sL https://github.com/facebook/$PKG/archive/$ver.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && ./autogen.sh && ./configure && make && make install && cd ../ && rm -fR $PKG
-
-# ENV PKG=go1.18.linux-amd64
-# RUN echo "Install Go"
-# RUN mkdir -p go && curl -sL https://storage.googleapis.com/golang/$PKG.tar.gz | tar -xz --strip 1 -C go && cp -R go /usr/local/ && rm -fR go
-
-# ENV PKG=rust
-# RUN echo "Install Rust"
-# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# ENV PKG=deno
-# RUN echo "Install Deno"
-# RUN curl -fsSL https://raw.githubusercontent.com/denoland/deno_install/master/install.sh | sh && touch .installed-$PKG
-
-# ENV PKG=docker
-# RUN echo "Install Docker"
-# RUN apt update
-# RUN apt install -y apt-transport-https ca-certificates curl software-properties-common
-# RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-# RUN apt update
-# RUN apt install $PKG-ce $PKG-ce-cli containerd.io && sudo usermod -aG docker $USER
-
-# ENV PKG=mongodb-linux-x86_64-ubuntu2004-5.0.6
-# RUN echo "Install MongoDB"
-# RUN mkdir -p mongo && curl -sL https://fastdl.mongodb.org/linux/$PKG.tgz | tar -xz --strip 1 -C mongo && cd mongo && cd ../ && cp -R bin /usr/local/ && mkdir -p /var/lib/mongo && rm -fR mongo
 
 # ENV PKG=postgresql
-# RUN echo "Install PostgreSQL"
-# RUN touch /etc/apt/sources.list.d/pgdg.list && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
-# RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-# RUN apt update
-# RUN apt install -y $PKG postgresql-contrib
-# RUN psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
-# RUN createdb -O pearl pearl
-# RUN psql pearl --command 'CREATE EXTENSION "pgcrypto";'
+# RUN echo "Pacman install PostgreSQL"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=redis-6.2.6
-# RUN echo "Install Redis"
-# RUN mkdir -p redis && curl -sL http://download.redis.io/releases/$PKG.tar.gz | tar -xz --strip 1 -C redis && cd redis && make && make install && cd ../ && mkdir -p /var/lib/redis && rm -fR redis
+# ENV PKG=mongodb-bin
+# RUN echo "Pacman install MongoDB"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=consul
-# RUN echo "Install Consul"
-# RUN curl -sL https://prl.io/7 > $PKG.zip && unzip $PKG.zip && rm $PKG.zip && cp -R $PKG /usr/local/bin/
+# ENV PKG=redis
+# RUN echo "Pacman install Redis"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=weave
-# RUN echo "Install Weave"
-# RUN curl -sL https://git.io/$PKG > /usr/local/bin/$PKG && chmod a+x /usr/local/bin/$PKG
+# ENV PKG=docker
+# RUN echo "Pacman install Docker"
+# RUN pacman -S --noconfirm --needed $PKG
+# RUN systemctl enable docker.service
+# RUN systemctl start docker.service
+# RUN systemctl enable containerd.service
+# RUN systemctl start containerd.service
 
-# ENV PKG=every
-# RUN echo "Install $PKG"
-# RUN mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
+# ENV PKG=kvm
+# RUN echo "Pacman install Docker"
+# RUN pacman -S --noconfirm --needed qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat edk2-ovmf dmidecode
+# RUN usermod -aG libvirt $USER
+# RUN systemctl enable systemd-resolved.service
+# RUN systemctl start systemd-resolved.service
+# RUN systemctl enable libvirtd.service
+# RUN systemctl start libvirtd.service
+# RUN virsh net-start default
+# RUN virsh net-autostart default
 
-# ENV PKG=flash
-# RUN echo "Install $PKG"
-# RUN mkdir -p $PKG && curl -sL https://github.com/kingpearl/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
+# ENV PKG=terraform
+# RUN echo "Pacman install Terraform"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=mon
-# RUN echo "Install $PKG"
-# RUN mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
+# ENV PKG=up
+# RUN echo "Install Apex"
+# RUN ["/bin/bash", "-c", "curl https://raw.githubusercontent.com/apex/up/master/install.sh | bash"]
 
-# ENV PKG=mad
-# RUN echo "Install $PKG"
-# RUN mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG
+# ENV PKG=consul-bin
+# RUN echo "Pacman install Consul"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=psy
-# RUN echo "NPM install psy"
-# RUN npm install -g $PKG
+# ENV PKG=papirus-icon-theme
+# RUN echo "Pacman install Papirus Icon Theme"
+# RUN pacman -S --noconfirm --needed $PKG
 
-ENV PKG=vim
-RUN echo "Apt install Vim"
-RUN apt install -y $PKG
+# ENV PKG=gnome-shell-extensions
+# RUN echo "Pacman install Gnome Shell Extensions"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=vundle
-# RUN echo "Install Vundle"
-# RUN mkdir -p $PKG && curl -sL https://github.com/gmarik/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && mv $PKG ~/.vim/bundle/$PKG
-# RUN vim +BundleInstall! +qall
-# RUN echo "colorscheme base16-spacemacs" >> ~/.vimrc
+# ENV PKG=gnome-themes-extra
+# RUN echo "Pacman install Gnome Themes Extra"
+# RUN pacman -S --noconfirm --needed $PKG
 
-# ENV PKG=zsh
-# RUN ehco "Apt install Zsh"
-# RUN apt install -y $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
+# ENV PKG=gnome-tweaks
+# RUN echo "Pacman install Gnome Tweaks"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=paru
+# RUN echo "Install Paru"
+# RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
+
+# ENV PKG=flatpak
+# RUN echo "Pacman install Flatpak"
+# RUN pacman -S --noconfirm --needed $PKG
+# RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# ENV PKG=android-studio
+# RUN echo "Paru install Android Studio"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=visual-studio-code-bin
+# RUN echo "Paru install Visual Studio Code"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=datagrip-jre
+# RUN echo "Paru install Datagrip"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=postman-bin
+# RUN echo "Paru install Postman"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=firefox
+# RUN echo "Pacman install Firefox"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=google-chrome
+# RUN echo "Paru install Google Chrome"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=evolution
+# RUN echo "Pacman install Evolution"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=slack-desktop
+# RUN echo "Paru install Slack"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=teams
+# RUN echo "Paru install Microsoft Teams"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=zoom
+# RUN echo "Paru install Zoom"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=gimp
+# RUN echo "Pacman install Gimp"
+# RUN pacman -S --noconfirm --needed $PKG
+
+# ENV PKG=spotify
+# RUN echo "Paru install Spotify"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=steam
+# RUN echo "Paru install Steam"
+# RUN paru -S --noconfirm --needed $PKG
+
+# ENV PKG=lutris
+# RUN echo "Pacman install Lustris"
+# RUN pacman -S --noconfirm --needed $PKG
