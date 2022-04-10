@@ -128,6 +128,10 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN pacman -S --noconfirm --needed $PKG
 # RUN ["/bin/bash", "-c", 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"']
 
+# ENV PKG=fish
+# RUN echo "Pacman install Fish"
+# RUN pacman -S --noconfirm --needed $PKG
+
 ENV PKG=vim
 RUN echo "Pacman install Vim"
 RUN pacman -S --noconfirm --needed $PKG

@@ -217,6 +217,13 @@ fi
 # sudo pacman -S --noconfirm --needed $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
 # fi
 
+# PKG=fish
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Fish"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
 PKG=vim
 if [ ! -f .installed-$PKG ];
 then
