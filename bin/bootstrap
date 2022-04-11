@@ -522,11 +522,11 @@ echo "Paru install Visual Studio Code"
 paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
-# PKG=datagrip-jre
+# PKG=datagrip
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Paru install Datagrip"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# paru -S --noconfirm --needed $PKG $PKG-jre && touch .installed-$PKG
 # fi
 
 # PKG=postman-bin
