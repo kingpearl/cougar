@@ -8,8 +8,8 @@ mkdir -p /var/tmp && cd /var/tmp
 echo "Pacman update"
 sudo pacman -Syyu --noconfirm
 
-echo "Flatpak update"
-flatpak update -y
+# echo "Flatpak update"
+# flatpak update -y
 
 echo "NPM update"
 sudo npm update -g
