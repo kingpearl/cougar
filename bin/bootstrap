@@ -481,6 +481,13 @@ echo "Pacman install Papirus Icon Theme"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
+PKG=xdg-desktop-portal
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install XDG Portal"
+sudo pacman -S --noconfirm --needed $PKG $PKG-gnome && touch .installed-$PKG
+fi
+
 PKG=gnome-shell-extensions
 if [ ! -f .installed-$PKG ];
 then
