@@ -481,6 +481,13 @@ echo "Pacman install Papirus Icon Theme"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
+PKG=fonts
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Fonts"
+sudo pacman -S --noconfirm --needed ttf-roboto ttf-roboto-mono ttf-jetbrains-mono && sudo fc-cache -r -v && touch .installed-$PKG
+fi
+
 PKG=xdg-desktop-portal
 if [ ! -f .installed-$PKG ];
 then
