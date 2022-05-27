@@ -429,33 +429,33 @@ fi
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-PKG=docker
-if [ ! -f .installed-$PKG ];
-then
-echo "Pacman install Docker"
-sudo pacman -S --noconfirm --needed $PKG $PKG-compose
+# PKG=docker
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Docker"
+# sudo pacman -S --noconfirm --needed $PKG $PKG-compose
 # sudo systemctl enable docker.service
 # sudo systemctl start docker.service
 # sudo systemctl enable containerd.service
 # sudo systemctl start containerd.service
-touch .installed-$PKG
-fi
+# touch .installed-$PKG
+# fi
 
-PKG=kvm
-if [ ! -f .installed-$PKG ];
-then
-echo "Pacman install KVM"
-sudo pacman -S --noconfirm --needed qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat edk2-ovmf dmidecode
-sudo usermod -aG libvirt $USER
-sudo systemctl enable systemd-resolved.service
-sudo systemctl start systemd-resolved.service
+# PKG=kvm
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install KVM"
+# sudo pacman -S --noconfirm --needed qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat edk2-ovmf dmidecode
+# sudo usermod -aG libvirt $USER
+# sudo systemctl enable systemd-resolved.service
+# sudo systemctl start systemd-resolved.service
 # sudo systemctl enable libvirtd.service
 # sudo systemctl start libvirtd.service
 # sudo virsh net-start default
 # sudo virsh net-autostart default
 # sudo virsh pool-define-as default dir - - - - "/home/shawn/Machines"
-touch .installed-$PKG
-fi
+# touch .installed-$PKG
+# fi
 
 # PKG=terraform
 # if [ ! -f .installed-$PKG ];
