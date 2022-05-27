@@ -13,9 +13,14 @@ sudo locale-gen en_US.UTF-8
 touch .installed-$PKG
 fi
 
+# PKG=bluebooth
+# if [ ! -f .installed-$PKG ];
+# then
 # echo "System enable/start bluebooth"
 # sudo systemctl enable bluetooth.service
 # sudo systemctl start bluetooth.service
+# touch .installed-$PKG
+# fi
 
 echo "Pacman update"
 sudo pacman -Syyu --noconfirm
@@ -428,7 +433,7 @@ PKG=docker
 if [ ! -f .installed-$PKG ];
 then
 echo "Pacman install Docker"
-sudo pacman -S --noconfirm --needed $PKG
+sudo pacman -S --noconfirm --needed $PKG $PKG-compose
 # sudo systemctl enable docker.service
 # sudo systemctl start docker.service
 # sudo systemctl enable containerd.service
