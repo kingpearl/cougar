@@ -8,6 +8,9 @@ mkdir -p /var/tmp && cd /var/tmp
 echo "Pacman update"
 sudo pacman -Syyu --noconfirm
 
+echo "Paru update"
+paru -Syyu --noconfirm
+
 # echo "Flatpak update"
 # flatpak update -y
 
