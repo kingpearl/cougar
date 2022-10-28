@@ -95,7 +95,7 @@ echo "Pacman install Rust"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
-PKG=nodejs-lts-gallium
+PKG=nodejs
 if [ ! -f .installed-$PKG ];
 then
 echo "Pacman install Node"
