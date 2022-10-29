@@ -95,6 +95,13 @@ echo "Pacman install Rust"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
+PKG=paru
+if [ ! -f .installed-$PKG ];
+then
+echo "Install Paru"
+git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
+fi
+
 PKG=nodejs
 if [ ! -f .installed-$PKG ];
 then
@@ -115,13 +122,6 @@ fi
 # echo "Pacman install OpenJDK"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
-
-PKG=paru
-if [ ! -f .installed-$PKG ];
-then
-echo "Install Paru"
-git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
-fi
 
 PKG=libarchive
 if [ ! -f .installed-$PKG ];
