@@ -613,11 +613,18 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
+# PKG=gamemode
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Gamemode"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
 # PKG=steam
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Paru install Steam"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# echo "Pacman install Steam"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=lutris
