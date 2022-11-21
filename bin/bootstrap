@@ -220,7 +220,7 @@ fi
 # then
 # echo "Pacman install Zsh"
 # sudo pacman -S --noconfirm --needed $PKG && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && touch .installed-$PKG
-# sudo usermod --shell /usr/bin/zsh $ME
+# sudo usermod --shell /usr/bin/zsh shawn
 # fi
 
 # PKG=fish
@@ -228,7 +228,7 @@ fi
 # then
 # echo "Pacman install Fish"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# sudo usermod --shell /usr/bin/fish $ME
+# sudo usermod --shell /usr/bin/fish shawn
 # fi
 
 PKG=vim
@@ -566,12 +566,12 @@ echo "Pacman install Firefox"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
-PKG=google-chrome
-if [ ! -f .installed-$PKG ];
-then
-echo "Paru install Google Chrome"
-paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=google-chrome
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Google Chrome"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
 # PKG=evolution
 # if [ ! -f .installed-$PKG ];
