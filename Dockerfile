@@ -1,4 +1,11 @@
 FROM archlinux
+
+# RUN groupadd wheel
+RUN useradd -m -G wheel -s /bin/bash vagrant
+RUN sed -Ei 's/^#\ (%wheel.*NOPASSWD.*)/\1/' /etc/sudoers
+WORKDIR /home/vagrant
+USER vagrant
+
 RUN mkdir -p /var/tmp && cd /var/tmp/
 
 ENV ME=$(whoami)
@@ -6,6 +13,7 @@ ENV PKG=profile
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 
+USER root
 # RUN echo "System enable/start bluebooth"
 # RUN systemctl enable bluetooth.service
 # RUN systemctl start bluetooth.service
@@ -27,12 +35,14 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN chmod 700 ~/.ssh
 # RUN chmod 600 ~/.ssh/*
 
+USER vagrant
 # Create workspace
 ENV PKG=workspace
 RUN echo "Create $PKG"
 RUN ["/bin/bash", "-c", "mkdir -p ~/.vim/{backups,bundle,swaps,undo}"]
 # RUN ["/bin/bash", "-c", "mkdir -p ~/Projects"]
 # RUN ["/bin/bash", "-c", "mkdir -p ~/Machines"]
+USER root
 
 # ENV PKG=intel-ucode
 # RUN echo "Pacman install Intel Microcode"
@@ -44,7 +54,7 @@ RUN pacman -S --noconfirm --needed base-devel openssl
 
 # ENV PKG=python
 # RUN echo "Pacman install Python"
-# RUN pacman -S --noconfirm --needed $PKG
+# RUN sudo pacman -S --noconfirm --needed $PKG
 
 # ENV PKG=go
 # RUN echo "Pacman install Go"
@@ -54,9 +64,11 @@ ENV PKG=rust
 RUN echo "Pacman install Rust"
 RUN pacman -S --noconfirm --needed $PKG
 
+# USER vagrant
 # ENV PKG=paru
 # RUN echo "Install Paru"
 # RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
+# USER root
 
 ENV PKG=nodejs
 RUN echo "Pacman install Node"
@@ -127,10 +139,12 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN echo "Pacman install Zsh"
 # RUN pacman -S --noconfirm --needed $PKG
 # RUN ["/bin/bash", "-c", 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"']
+# RUN usermod --shell /usr/bin/zsh vagrant
 
 # ENV PKG=fish
 # RUN echo "Pacman install Fish"
 # RUN pacman -S --noconfirm --needed $PKG
+# RUN usermod --shell /usr/bin/fish vagrant
 
 ENV PKG=vim
 RUN echo "Pacman install Vim"
@@ -241,9 +255,11 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN echo "Pacman install PostgreSQL"
 # RUN pacman -S --noconfirm --needed $PKG
 
+# USER vagrant
 # ENV PKG=mongodb-bin
 # RUN echo "Paru install MongoDB"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
 # ENV PKG=redis
 # RUN echo "Pacman install Redis"
@@ -301,53 +317,71 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN pacman -S --noconfirm --needed $PKG
 # RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# USER vagrant
 # ENV PKG=android-studio
 # RUN echo "Paru install Android Studio"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
+# USER vagrant
 # ENV PKG=visual-studio-code-bin
 # RUN echo "Paru install Visual Studio Code"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
+# USER vagrant
 # ENV PKG=dblab
 # RUN echo "Paru install dblab"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
+# USER vagrant
 # ENV PKG=postman-bin
 # RUN echo "Paru install Postman"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
 # ENV PKG=firefox
 # RUN echo "Pacman install Firefox"
 # RUN pacman -S --noconfirm --needed $PKG
 
+# USER vagrant
 # ENV PKG=google-chrome
 # RUN echo "Paru install Google Chrome"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
 # ENV PKG=evolution
 # RUN echo "Pacman install Evolution"
 # RUN pacman -S --noconfirm --needed $PKG
 
+# USER vagrant
 # ENV PKG=slack-desktop
 # RUN echo "Paru install Slack"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
+# USER vagrant
 # ENV PKG=teams
 # RUN echo "Paru install Microsoft Teams"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
+# USER vagrant
 # ENV PKG=zoom
 # RUN echo "Paru install Zoom"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
 # ENV PKG=gimp
 # RUN echo "Pacman install Gimp"
 # RUN pacman -S --noconfirm --needed $PKG
 
+# USER vagrant
 # ENV PKG=spotify
 # RUN echo "Paru install Spotify"
 # RUN paru -S --noconfirm --needed $PKG
+# USER root
 
 # ENV PKG=gamemode
 # RUN echo "Pacman install Gamemode"
