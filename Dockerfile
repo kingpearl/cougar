@@ -54,7 +54,11 @@ ENV PKG=rust
 RUN echo "Pacman install Rust"
 RUN pacman -S --noconfirm --needed $PKG
 
-ENV PKG=nodejs-lts-gallium
+# ENV PKG=paru
+# RUN echo "Install Paru"
+# RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
+
+ENV PKG=nodejs
 RUN echo "Pacman install Node"
 RUN pacman -S --noconfirm --needed $PKG
 
@@ -65,10 +69,6 @@ RUN pacman -S --noconfirm --needed $PKG
 # ENV PKG=jdk8-openjdk
 # RUN echo "Pacman install OpenJDK"
 # RUN pacman -S --noconfirm --needed $PKG
-
-# ENV PKG=paru
-# RUN echo "Install Paru"
-# RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
 
 ENV PKG=libarchive
 RUN echo "Pacman install Tar"
@@ -309,8 +309,8 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN echo "Paru install Visual Studio Code"
 # RUN paru -S --noconfirm --needed $PKG
 
-# ENV PKG=datagrip-jre
-# RUN echo "Paru install Datagrip"
+# ENV PKG=dblab
+# RUN echo "Paru install dblab"
 # RUN paru -S --noconfirm --needed $PKG
 
 # ENV PKG=postman-bin
@@ -349,9 +349,13 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN echo "Paru install Spotify"
 # RUN paru -S --noconfirm --needed $PKG
 
+# ENV PKG=gamemode
+# RUN echo "Pacman install Gamemode"
+# RUN pacman -S --noconfirm --needed $PKG
+
 # ENV PKG=steam
-# RUN echo "Paru install Steam"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN echo "Pacman install Steam"
+# RUN pacman -S --noconfirm --needed $PKG
 
 # ENV PKG=lutris
 # RUN echo "Pacman install Lustris"
