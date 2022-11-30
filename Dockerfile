@@ -2,9 +2,6 @@ FROM archlinux
 
 WORKDIR /var/tmp
 
-RUN useradd -m -G wheel -s /bin/bash vagrant
-RUN sed -Ei 's/^#\ (%wheel.*NOPASSWD.*)/\1/' /etc/sudoers
-
 ENV ME=$(whoami)
 ENV PKG=profile
 ENV TZ=America/New_York
@@ -44,6 +41,9 @@ RUN pacman -S --noconfirm --needed $PKG
 ENV PKG=make-gcc-ssl
 RUN echo "Pacman install Make & GCC & SSL"
 RUN pacman -S --noconfirm --needed base-devel openssl
+
+RUN useradd -m -G wheel -s /bin/bash vagrant
+RUN sed -Ei 's/^#\ (%wheel.*NOPASSWD.*)/\1/' /etc/sudoers
 
 # ENV PKG=python
 # RUN echo "Pacman install Python"
