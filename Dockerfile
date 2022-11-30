@@ -1,19 +1,14 @@
 FROM archlinux
 
-# RUN groupadd wheel
+WORKDIR /var/tmp
+
 RUN useradd -m -G wheel -s /bin/bash vagrant
 RUN sed -Ei 's/^#\ (%wheel.*NOPASSWD.*)/\1/' /etc/sudoers
-WORKDIR /home/vagrant
-USER vagrant
-
-RUN mkdir -p /var/tmp && cd /var/tmp/
 
 ENV ME=$(whoami)
 ENV PKG=profile
-ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 
-USER root
 # RUN echo "System enable/start bluebooth"
 # RUN systemctl enable bluetooth.service
 # RUN systemctl start bluetooth.service
@@ -35,14 +30,12 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN chmod 700 ~/.ssh
 # RUN chmod 600 ~/.ssh/*
 
-USER vagrant
 # Create workspace
-ENV PKG=workspace
-RUN echo "Create $PKG"
-RUN ["/bin/bash", "-c", "mkdir -p ~/.vim/{backups,bundle,swaps,undo}"]
+# ENV PKG=workspace
+# RUN echo "Create $PKG"
+# RUN ["/bin/bash", "-c", "mkdir -p ~/.vim/{backups,bundle,swaps,undo}"]
 # RUN ["/bin/bash", "-c", "mkdir -p ~/Projects"]
 # RUN ["/bin/bash", "-c", "mkdir -p ~/Machines"]
-USER root
 
 # ENV PKG=intel-ucode
 # RUN echo "Pacman install Intel Microcode"
@@ -64,11 +57,9 @@ ENV PKG=rust
 RUN echo "Pacman install Rust"
 RUN pacman -S --noconfirm --needed $PKG
 
-# USER vagrant
 # ENV PKG=paru
 # RUN echo "Install Paru"
 # RUN ["/bin/bash", "-c", "git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru"]
-# USER root
 
 ENV PKG=nodejs
 RUN echo "Pacman install Node"
@@ -119,7 +110,6 @@ RUN pacman -S --noconfirm --needed $PKG
 # RUN pacman -S --noconfirm --needed libcurl-gnutls
 # RUN mkdir -p $PKG && curl -sL https://github.com/clibs/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
 
-# ENV PKG=every
 # RUN echo "Install $PKG"
 # RUN ["/bin/bash", "-c", "curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && make install && cd ../ && rm -fR $PKG"]
 
@@ -258,7 +248,7 @@ RUN pacman -S --noconfirm --needed $PKG
 # USER vagrant
 # ENV PKG=mongodb-bin
 # RUN echo "Paru install MongoDB"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # ENV PKG=redis
@@ -320,25 +310,25 @@ RUN pacman -S --noconfirm --needed $PKG
 # USER vagrant
 # ENV PKG=android-studio
 # RUN echo "Paru install Android Studio"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # USER vagrant
 # ENV PKG=visual-studio-code-bin
 # RUN echo "Paru install Visual Studio Code"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # USER vagrant
 # ENV PKG=dblab
 # RUN echo "Paru install dblab"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # USER vagrant
 # ENV PKG=postman-bin
 # RUN echo "Paru install Postman"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # ENV PKG=firefox
@@ -348,7 +338,7 @@ RUN pacman -S --noconfirm --needed $PKG
 # USER vagrant
 # ENV PKG=google-chrome
 # RUN echo "Paru install Google Chrome"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # ENV PKG=evolution
@@ -358,29 +348,29 @@ RUN pacman -S --noconfirm --needed $PKG
 # USER vagrant
 # ENV PKG=slack-desktop
 # RUN echo "Paru install Slack"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # USER vagrant
 # ENV PKG=teams
 # RUN echo "Paru install Microsoft Teams"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # USER vagrant
 # ENV PKG=zoom
 # RUN echo "Paru install Zoom"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # ENV PKG=gimp
 # RUN echo "Pacman install Gimp"
-# RUN pacman -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 
 # USER vagrant
 # ENV PKG=spotify
 # RUN echo "Paru install Spotify"
-# RUN paru -S --noconfirm --needed $PKG
+# RUN git clone https://aur.archlinux.org/$PKG.git && cd $PKG && makepkg si --noconfirm && cd ../ && rm -fr $PKG
 # USER root
 
 # ENV PKG=gamemode
