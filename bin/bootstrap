@@ -558,7 +558,6 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-
 PKG=firefox
 if [ ! -f .installed-$PKG ];
 then
@@ -626,12 +625,5 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Pacman install Steam"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=lutris
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install Lutris"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
