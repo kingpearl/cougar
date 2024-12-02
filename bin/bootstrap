@@ -447,7 +447,7 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Pacman install KVM"
-# sudo pacman -S --noconfirm --needed qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat edk2-ovmf dmidecode
+# sudo pacman -S --noconfirm --needed qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat edk2-ovmf dmidecode
 # sudo usermod -aG libvirt $USER
 # sudo systemctl enable systemd-resolved.service
 # sudo systemctl start systemd-resolved.service
