@@ -421,7 +421,14 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Paru install MongoDB"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# sudo paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
+# PKG=mongodb-tools-bin
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install MongoDB Tools"
+# sudo paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=redis
