@@ -551,11 +551,11 @@ echo "Paru install Visual Studio Code"
 paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
-PKG=cursor-bin
+PKG=zed
 if [ ! -f .installed-$PKG ];
 then
 echo "Paru install Cursor AI"
-paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
 # PKG=dblab
