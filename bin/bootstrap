@@ -382,27 +382,6 @@ fi
 # sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
-# PKG=create-react-app
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Create React App"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=create-react-native-app
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Create React Native App"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=react-native-cli
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install React Native CLI"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
 # PKG=particle-cli
 # if [ ! -f .installed-$PKG ];
 # then
