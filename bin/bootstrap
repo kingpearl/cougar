@@ -347,48 +347,6 @@ fi
 # sudo npm install -g $PKG && touch .installed-$PKG
 # fi
 
-# PKG=yarn
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Yarn"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=bower
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Bower"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=browserify
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Browserify"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=duo
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Duo"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=webpack
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install $PKG"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
-# PKG=particle-cli
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "NPM install Particle"
-# sudo npm install -g $PKG && touch .installed-$PKG
-# fi
-
 # PKG=postgresql
 # if [ ! -f .installed-$PKG ];
 # then
