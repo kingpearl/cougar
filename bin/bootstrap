@@ -106,7 +106,7 @@ PKG=nodejs
 if [ ! -f .installed-$PKG ];
 then
 echo "Pacman install Node"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+sudo pacman -S --noconfirm --needed nodejs-lts-krypton && touch .installed-$PKG
 fi
 
 # PKG=deno
