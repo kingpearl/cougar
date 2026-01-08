@@ -509,6 +509,27 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
+# PKG=codex
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Codex"
+# sudo npm install -g $PKG && touch .installed-$PKG
+# fi
+
+# PKG=gemini-cli
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Gemini ClI"
+# sudo npm install -g @google/gemini-cli && touch .installed-$PKG
+# fi
+
+# PKG=claude-code
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "NPM install Claude Code"
+# sudo npm install -g @anthropic-ai/claude-code && touch .installed-$PKG
+# fi
+
 PKG=firefox
 if [ ! -f .installed-$PKG ];
 then
