@@ -6,10 +6,10 @@
 mkdir -p /var/tmp && cd /var/tmp
 
 echo "Pacman update"
-sudo pacman -Syyu --noconfirm
+sudo pacman -Syu --noconfirm
 
 echo "Paru update"
-paru -Syyu --noconfirm
+paru -Syu --noconfirm
 
 # echo "Flatpak update"
 # flatpak update -y
