@@ -513,7 +513,7 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "NPM install Codex"
-# sudo npm install -g $PKG && touch .installed-$PKG
+# sudo npm install -g @openai/codex && touch .installed-$PKG
 # fi
 
 # PKG=gemini-cli
