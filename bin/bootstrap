@@ -23,7 +23,7 @@ fi
 # fi
 
 echo "Pacman update"
-sudo pacman -Syyu --noconfirm
+sudo pacman -Syu --noconfirm
 
 PKG=curl
 if [ ! -f .installed-$PKG ];
