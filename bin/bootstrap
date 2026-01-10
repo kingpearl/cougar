@@ -481,19 +481,19 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-PKG=visual-studio-code-bin
-if [ ! -f .installed-$PKG ];
-then
-echo "Paru install Visual Studio Code"
-paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=visual-studio-code-bin
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Visual Studio Code"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
-PKG=zed
-if [ ! -f .installed-$PKG ];
-then
-echo "Paru install Cursor AI"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=zed
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Zed"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
 # PKG=dblab
 # if [ ! -f .installed-$PKG ];
