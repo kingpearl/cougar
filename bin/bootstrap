@@ -526,8 +526,8 @@ fi
 # PKG=claude-code
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "NPM install Claude Code"
-# sudo npm install -g @anthropic-ai/claude-code && touch .installed-$PKG
+# echo "Paru install Claude Code"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 PKG=firefox
