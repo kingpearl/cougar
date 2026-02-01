@@ -613,3 +613,10 @@ fi
 # echo "Pacman install Retro Arch"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
+
+# PKG=unityhub
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Unity Hub"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
