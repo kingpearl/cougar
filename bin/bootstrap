@@ -586,13 +586,6 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-# PKG=chatgpt
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install ChatGPT"
-# paru -S --noconfirm --needed chatgpt-desktop-bin && touch .installed-$PKG
-# fi
-
 # PKG=claude
 # if [ ! -f .installed-$PKG ];
 # then
