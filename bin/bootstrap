@@ -231,7 +231,7 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-PKG=htop
+PKG=btop
 if [ ! -f .installed-$PKG ];
 then
 echo "Pacman install Htop"
