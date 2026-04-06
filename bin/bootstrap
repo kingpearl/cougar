@@ -144,32 +144,11 @@ fi
 # sudo pacman -S --noconfirm --needed wine winetricks && touch .installed-$PKG
 # fi
 
-# PKG=aspell
+# PKG=lazygit
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Aspell"
+# echo "Pacman install Lazygit"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=the_silver_searcher
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install The Silver Searcher"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=git-extras
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install $PKG"
-# mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
-# fi
-
-# PKG=gitflow-avh
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Git Flow AVH"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=burl
@@ -223,12 +202,12 @@ fi
 # sudo usermod --shell /usr/bin/zsh shawn
 # fi
 
-# PKG=fish
+# PKG=starship
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Fish"
+# echo "Pacman install Starship"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# sudo usermod --shell /usr/bin/fish shawn
+
 # fi
 
 PKG=vim
@@ -248,19 +227,18 @@ echo "colorscheme base16-spacemacs" >> ~/.vimrc
 touch .installed-$PKG
 fi
 
-# PKG=emacs
+# PKG=neovim
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Emacs"
+# echo "Pacman install Neovim"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-# PKG=spacemacs
+# PKG=nvim-lazy
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Install Spacemacs"
-# git clone https://github.com/syl20bnr/$PKG ~/.emacs.d
-# touch .installed-$PKG
+# echo "Paru install LazyVim"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 PKG=htop
@@ -387,6 +365,13 @@ fi
 # touch .installed-$PKG
 # fi
 
+# PKG=lazydocker
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Lazy Docker"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
+
 # PKG=kvm
 # if [ ! -f .installed-$PKG ];
 # then
@@ -403,26 +388,12 @@ fi
 # touch .installed-$PKG
 # fi
 
-# PKG=terraform
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Terraform"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
 # PKG=up
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Install Apex"
 # curl https://raw.githubusercontent.com/apex/up/master/install.sh | bash
 # touch .installed-$PKG
-# fi
-
-# PKG=consul-bin
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Install Consul"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 PKG=papirus-icon-theme
@@ -478,13 +449,6 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Paru install Android Studio"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=visual-studio-code-bin
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Visual Studio Code"
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
@@ -551,39 +515,11 @@ fi
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-# PKG=slack-desktop
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Slack"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=teams
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Microsoft Teams"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=zoom
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Zoom"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
 # PKG=gimp
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Pacman install Gimp"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=spotify
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Spotify"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=claude
