@@ -205,7 +205,7 @@ fi
 # if [ ! -f .installed-$PKG ];
 # then
 # echo "Pacman install Starship"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# sudo pacman -S --noconfirm --needed $PKG ttf-jetbrains-mono-nerd && touch .installed-$PKG
 # eval "$(starship init bash)"
 # echo 'eval "$(starship init bash)"' >> ~/.bashrc
 # fi
