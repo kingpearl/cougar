@@ -207,7 +207,8 @@ fi
 # then
 # echo "Pacman install Starship"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-
+# eval "$(starship init bash)"
+# echo 'eval "$(starship init bash)"' >> ~/.bashrc
 # fi
 
 PKG=vim
