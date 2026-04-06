@@ -218,16 +218,6 @@ echo "Pacman install Vim"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
-PKG=vundle
-if [ ! -f .installed-$PKG ];
-then
-echo "Install Vundle"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
-echo "colorscheme base16-spacemacs" >> ~/.vimrc
-touch .installed-$PKG
-fi
-
 # PKG=neovim
 # if [ ! -f .installed-$PKG ];
 # then
