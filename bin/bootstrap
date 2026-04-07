@@ -231,10 +231,17 @@ fi
 # paru -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
+PKG=fastfetch
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Fastfetch"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
 PKG=btop
 if [ ! -f .installed-$PKG ];
 then
-echo "Pacman install Htop"
+echo "Pacman install Btop"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
@@ -400,33 +407,33 @@ echo "Pacman install Fira Fonts"
 sudo pacman -S --noconfirm --needed $PKG-sans $PKG-mono $PKG-code && sudo fc-cache -r -v && touch .installed-$PKG
 fi
 
-PKG=xdg-desktop-portal
-if [ ! -f .installed-$PKG ];
-then
-echo "Pacman install XDG Portal"
-sudo pacman -S --noconfirm --needed $PKG $PKG-gnome && touch .installed-$PKG
-fi
+# PKG=xdg-desktop-portal
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install XDG Portal"
+# sudo pacman -S --noconfirm --needed $PKG $PKG-gnome && touch .installed-$PKG
+# fi
 
-PKG=gnome-shell-extensions
-if [ ! -f .installed-$PKG ];
-then
-echo "Pacman install Gnome Shell Extensions"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=gnome-shell-extensions
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Gnome Shell Extensions"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
-PKG=gnome-themes-extra
-if [ ! -f .installed-$PKG ];
-then
-echo "Pacman install Gnome Themes Extra"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=gnome-themes-extra
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Gnome Themes Extra"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
-PKG=gnome-tweaks
-if [ ! -f .installed-$PKG ];
-then
-echo "Pacman install Gnome Tweaks"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=gnome-tweaks
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Gnome Tweaks"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
 # PKG=flatpak
 # if [ ! -f .installed-$PKG ];
