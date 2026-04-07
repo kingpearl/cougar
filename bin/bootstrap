@@ -143,13 +143,6 @@ fi
 # sudo pacman -S --noconfirm --needed wine winetricks && touch .installed-$PKG
 # fi
 
-# PKG=lazygit
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install Lazygit"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
 # PKG=burl
 # if [ ! -f .installed-$PKG ];
 # then
@@ -191,6 +184,13 @@ fi
 # then
 # echo "Install $PKG"
 # mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
+# fi
+
+# PKG=lazygit
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install Lazygit"
+# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
 # PKG=zsh
