@@ -238,6 +238,13 @@ echo "Pacman install Fastfetch"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
+PKG=fzf
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install fzf"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
 PKG=btop
 if [ ! -f .installed-$PKG ];
 then
