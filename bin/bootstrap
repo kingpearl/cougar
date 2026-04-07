@@ -210,26 +210,19 @@ fi
 # echo 'eval "$(starship init bash)"' >> ~/.bashrc
 # fi
 
-PKG=vim
+PKG=neovim
 if [ ! -f .installed-$PKG ];
 then
-echo "Pacman install Vim"
+echo "Pacman install Neovim"
 sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 fi
 
-# PKG=neovim
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install Neovim"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=nvim-lazy
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install LazyVim"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
+PKG=nvim-lazy
+if [ ! -f .installed-$PKG ];
+then
+echo "Paru install LazyVim"
+paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
 
 PKG=fastfetch
 if [ ! -f .installed-$PKG ];
