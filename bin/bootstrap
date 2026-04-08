@@ -186,12 +186,12 @@ fi
 # mkdir -p $PKG && curl -sL https://github.com/visionmedia/$PKG/archive/master.tar.gz | tar -xz --strip 1 -C $PKG && cd $PKG && sudo make install && cd ../ && rm -fR $PKG && touch .installed-$PKG
 # fi
 
-# PKG=lazygit
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install Lazygit"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
+PKG=lazygit
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Lazygit"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
 
 # PKG=zsh
 # if [ ! -f .installed-$PKG ];
@@ -201,14 +201,20 @@ fi
 # sudo usermod --shell /usr/bin/zsh shawn
 # fi
 
-# PKG=starship
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install Starship"
-# sudo pacman -S --noconfirm --needed $PKG ttf-jetbrains-mono-nerd && touch .installed-$PKG
-# eval "$(starship init bash)"
-# echo 'eval "$(starship init bash)"' >> ~/.bashrc
-# fi
+PKG=starship
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Starship"
+sudo pacman -S --noconfirm --needed $PKG ttf-jetbrains-mono-nerd && touch .installed-$PKG
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
+fi
+
+PKG=tmux
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install tmux"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
 
 PKG=neovim
 if [ ! -f .installed-$PKG ];
@@ -484,12 +490,12 @@ fi
 # sudo npm install -g @google/gemini-cli && touch .installed-$PKG
 # fi
 
-# PKG=claude-code
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Paru install Claude Code"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
+PKG=claude-code
+if [ ! -f .installed-$PKG ];
+then
+echo "Paru install Claude Code"
+paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
 
 PKG=firefox
 if [ ! -f .installed-$PKG ];
