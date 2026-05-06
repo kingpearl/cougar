@@ -518,10 +518,24 @@ fi
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
-# PKG=gimp
+# PKG=pinta
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Gimp"
+# echo "Paru install Pinta"
+# paru -S --noconfirm --needed claude-desktop-bin && touch .installed-$PKG
+# fi
+
+# PKG=cliamp-bin
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install cliamp"
+# paru -S --noconfirm --needed claude-desktop-bin && touch .installed-$PKG
+# fi
+
+# PKG=mpv
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Pacman install mpv"
 # sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
 # fi
 
