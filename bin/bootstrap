@@ -101,6 +101,13 @@ echo "Install Paru"
 git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
 fi
 
+PKG=zig
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Zig"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
 PKG=nodejs
 if [ ! -f .installed-$PKG ];
 then
