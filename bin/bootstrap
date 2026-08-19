@@ -497,12 +497,12 @@ fi
 # sudo npm install -g @google/gemini-cli && touch .installed-$PKG
 # fi
 
-PKG=claude-code
-if [ ! -f .installed-$PKG ];
-then
-echo "Paru install Claude Code"
-paru -S --noconfirm --needed $PKG && touch .installed-$PKG
-fi
+# PKG=claude-code
+# if [ ! -f .installed-$PKG ];
+# then
+# echo "Paru install Claude Code"
+# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# fi
 
 PKG=firefox
 if [ ! -f .installed-$PKG ];
