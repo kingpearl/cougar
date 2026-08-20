@@ -73,25 +73,32 @@ echo "Pacman install Make & GCC & SSL"
 sudo pacman -S --noconfirm --needed base-devel openssl && touch .installed-$PKG
 fi
 
+PKG=mise
+if [ ! -f .installed-$PKG ];
+then
+echo "Pacman install Mise"
+sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+fi
+
 # PKG=python
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Python"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# echo "Mise install Python"
+# sudo mise use -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=go
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Go"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# echo "Mise install Go"
+# sudo mise use -g $PKG && touch .installed-$PKG
 # fi
 
 PKG=rust
 if [ ! -f .installed-$PKG ];
 then
-echo "Pacman install Rust"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+echo "Mise install Rust"
+sudo mise use -g $PKG && touch .installed-$PKG
 fi
 
 PKG=paru
@@ -104,29 +111,22 @@ fi
 PKG=zig
 if [ ! -f .installed-$PKG ];
 then
-echo "Pacman install Zig"
-sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+echo "Mise install Zig"
+sudo mise use -g $PKG && touch .installed-$PKG
 fi
 
-PKG=nodejs
+PKG=node
 if [ ! -f .installed-$PKG ];
 then
-echo "Pacman install Node"
-sudo pacman -S --noconfirm --needed nodejs-lts-krypton && touch .installed-$PKG
+echo "Mise install Node"
+sudo mise use -g $PKG && touch .installed-$PKG
 fi
 
 # PKG=deno
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Pacman install Deno"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
-# fi
-
-# PKG=jdk8-openjdk
-# if [ ! -f .installed-$PKG ];
-# then
-# echo "Pacman install OpenJDK"
-# sudo pacman -S --noconfirm --needed $PKG && touch .installed-$PKG
+# echo "Mise install Deno"
+# sudo mise use -g $PKG && touch .installed-$PKG
 # fi
 
 PKG=libarchive
@@ -486,22 +486,22 @@ fi
 # PKG=codex
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "NPM install Codex"
-# sudo npm install -g @openai/codex && touch .installed-$PKG
+# echo "Mise install Codex"
+# sudo mise use -g $PKG && touch .installed-$PKG
 # fi
 
 # PKG=gemini-cli
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "NPM install Gemini ClI"
-# sudo npm install -g @google/gemini-cli && touch .installed-$PKG
+# echo "Mise install Gemini ClI"
+# sudo mise use -g gemini-cli && touch .installed-$PKG
 # fi
 
 # PKG=claude-code
 # if [ ! -f .installed-$PKG ];
 # then
-# echo "Paru install Claude Code"
-# paru -S --noconfirm --needed $PKG && touch .installed-$PKG
+# echo "Mise install Claude Code"
+# sudo mise use -g $PKG && touch .installed-$PKG
 # fi
 
 PKG=firefox
