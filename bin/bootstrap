@@ -108,13 +108,6 @@ echo "Install Paru"
 git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si && cd ../ && rm -fR paru && touch .installed-$PKG
 fi
 
-PKG=zig
-if [ ! -f .installed-$PKG ];
-then
-echo "Mise install Zig"
-sudo mise use -g $PKG && touch .installed-$PKG
-fi
-
 PKG=node
 if [ ! -f .installed-$PKG ];
 then
@@ -128,6 +121,13 @@ fi
 # echo "Mise install Deno"
 # sudo mise use -g $PKG && touch .installed-$PKG
 # fi
+
+PKG=bun
+if [ ! -f .installed-$PKG ];
+then
+echo "Mise install Bun"
+sudo mise use -g $PKG && touch .installed-$PKG
+fi
 
 PKG=libarchive
 if [ ! -f .installed-$PKG ];
